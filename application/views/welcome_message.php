@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Welcome to CodeIgniter</title>
-
+	<link href="assets/css/bootstrap.css" rel="stylesheet">
 	<style type="text/css">
 
 	::selection{ background-color: #E13300; color: white; }
@@ -83,6 +83,10 @@
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
 </div>
-
+<button class="btn btn-large btn-primary" type="button">Large button</button> 
+   <button class="btn btn-large" type="button">Large button</button> 
+   
+	<script src="assets/js/jquery-1.8.3.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
 </body>
 </html>

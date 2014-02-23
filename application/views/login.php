@@ -1,13 +1,15 @@
-<div class="container">
-
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Alerta Quecarros Login</h3>
+  </div>
+  <div class="panel-body">
       <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="input-block-level" placeholder="Email address">
-        <input type="password" class="input-block-level" placeholder="Password">
+        <input type="text" class="input-block-level" placeholder="Endereço de Email">
+        <input type="password" class="input-block-level" placeholder="Senha">
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
-        <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+        <button class="btn btn-large btn-primary" type="submit">Entrar</button>
       </form>
-
-    </div>
+  </div>
+</div>

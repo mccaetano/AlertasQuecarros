@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div  id="dlgLogin" class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title">Alerta Quecarros Login</h3>
   </div>
@@ -13,3 +13,9 @@
       </form>
   </div>
 </div>
+
+  <script type="text/javascript">
+  $(function() {
+    $( "#dlgLogin" ).dialog();
+  });
+  </script>

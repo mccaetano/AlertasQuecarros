@@ -1,21 +1,26 @@
-<div  id="dlgLogin" class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">Alerta Quecarros Login</h3>
-  </div>
-  <div class="panel-body">
-      <form class="form-signin">
-        <input type="text" class="input-block-level" placeholder="EndereÃ§o de Email">
-        <input type="password" class="input-block-level" placeholder="Senha">
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <button class="btn btn-large btn-primary" type="submit">Entrar</button>
-      </form>
-  </div>
+
+<div class="well well-small">
+	<form class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label" for="iloginEmail">Email</label>
+			<div class="controls">
+				<input type="text" id="iloginEmail" placeholder="Endereço de Email">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="iloginSenha">Senha</label>
+			<div class="controls">
+				<input type="text" id="iloginSenha" placeholder="Senha">
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<label	class="checkbox">
+					<input type="checkbox">Lembrar-me
+				</label>
+				<button class="btn btn-small btn-primary" type="submit">Entrar</button>
+			</div>			
+		</div>
+	</form>
 </div>
 
-  <script type="text/javascript">
-  $(function() {
-    $( "#dlgLogin" ).dialog();
-  });
-  </script>

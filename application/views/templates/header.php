@@ -9,7 +9,7 @@
 
 <link href="<?php echo base_url();?>assets/css/bootstrap.css"	rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/bootstrap-responsive.css"	rel="stylesheet">
-<?php echo $customcss ? $customcss : ""?>
+<?php echo isset($customcss) ? $customcss : ""?>
 
 <style type="text/css">
 body {

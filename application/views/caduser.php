@@ -4,7 +4,7 @@
 			<fieldset>
 
 				<!-- Form Name -->
-				<legend>Cadastro de Usuário</legend>
+				<legend>Crie uma conta grátis <a href="login">você já tem uma conta Quecarros</a></legend>
 
 				<!-- Text input-->
 				<div class="control-group">
@@ -26,7 +26,7 @@
 
 				<!-- Password input-->
 				<div class="control-group">
-					<label class="control-label" for="iRepSenha">Repita Senha:</label>
+					<label class="control-label" for="iRepSenha">Repita a Senha:</label>
 					<div class="controls">
 						<input id="iRepSenha" name="iRepSenha" type="password"
 							placeholder="Preencha sua senha com mínimo 6 dígitos" class="input-xlarge" required="">

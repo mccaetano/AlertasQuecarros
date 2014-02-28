@@ -4,8 +4,8 @@
 			<fieldset>
 
 				<!-- Form Name -->
-				<legend>Crie uma conta grátis <a href="login">você já tem uma conta Quecarros</a></legend>
-
+				<legend>Crie uma conta grÃ¡tis <a href="login">vocÃª jÃ¡ tem uma conta Quecarros</a></legend>
+				
 				<!-- Text input-->
 				<div class="control-group">
 					<label class="control-label" for="iEmail">Email</label>
@@ -20,7 +20,7 @@
 					<label class="control-label" for="iSenha">Senha</label>
 					<div class="controls">
 						<input id="iSenha" name="iSenha" type="password"
-							placeholder="Preencha sua senha com mínimo 6 dígitos" class="input-xlarge" required="">
+							placeholder="Preencha sua senha com mÃ¡nimo 6 dÃ­gitos" class="input-xlarge" required="">
 					</div>
 				</div>
 
@@ -29,7 +29,7 @@
 					<label class="control-label" for="iRepSenha">Repita a Senha:</label>
 					<div class="controls">
 						<input id="iRepSenha" name="iRepSenha" type="password"
-							placeholder="Preencha sua senha com mínimo 6 dígitos" class="input-xlarge" required="">
+							placeholder="Preencha sua senha com mÃ¡nimo 6 dÃ­gitos" class="input-xlarge" required="">
 					</div>
 				</div>
 

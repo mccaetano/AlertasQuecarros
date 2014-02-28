@@ -22,11 +22,11 @@ body {
 <script src="<?php echo base_url();?>assets/js/jquery-ui.min.js"></script>
 
 <!-- Fav and touch icons -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url();?>assets/img/glyphicons-halflings.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url();?>assets/img/glyphicons-halflings.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url();?>assets/img/glyphicons-halflings.png">
-<link rel="apple-touch-icon-precomposed" href="<?php echo base_url();?>assets/img/glyphicons-halflings.png">
-<link rel="shortcut icon" href="<?php echo base_url();?>assets/img/glyphicons-halflings.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url();?>assets/img/querocarros.com.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url();?>assets/img/querocarros.com_148.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url();?>assets/img/querocarros.com_48.png">
+<link rel="apple-touch-icon-precomposed" href="<?php echo base_url();?>assets/img/querocarros.com_48.png">
+<link rel="shortcut icon" href="<?php echo base_url();?>assets/img/querocarros.com_48.png">
 </head>
 <body>
 	<div class="navbar navbar-fixed-top">
@@ -40,11 +40,11 @@ body {
 				</button>				
 				<div class="brand">
 					<a href="#">
-						<img alt="logo" src="img.png">
+						<img alt="logo" src="<?php echo base_url();?>assets/img/querocarros.com_148.png">
 					</a>
 				</div>
 				<div class="nav-collapse collapse">
-					<form class="form-search">
+					<form class="form-search pull-left">
 					 	<div class="input-append">
 							<input class="span5 search-query" type="text" placeholder="Pesquisar">
 							<button type="submit" class="btn"><i class="icon-search"></i></button>

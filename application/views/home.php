@@ -4,7 +4,7 @@
 			<thead>
 				<tr>
 					<th>Alertas</th>
-					<th>Frequência</th>
+					<th>FrequÃªncia</th>
 					<th>A pesquisa foi guardada</th>
 					<th></th>
 				</tr>

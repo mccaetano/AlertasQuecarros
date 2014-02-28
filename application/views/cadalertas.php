@@ -4,7 +4,7 @@
 			<fieldset>
 
 				<!-- Form Name -->
-				<legend>Crie uma alerta e receba os novos anúncios no seu e-mail</legend>
+				<legend>Crie uma alerta e receba os novos anÃºncios no seu e-mail</legend>
 
 				<!-- Appended Input-->
 				<div class="control-group">

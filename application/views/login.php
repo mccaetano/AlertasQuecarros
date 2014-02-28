@@ -6,7 +6,7 @@
 			<div class="control-group">
 				<label class="control-label" for="iloginEmail">Email</label>
 				<div class="controls">
-					<input type="text" id="iloginEmail" placeholder="Endereço de Email">
+					<input type="text" id="iloginEmail" placeholder="EndereÃ§o de Email">
 				</div>
 			</div>
 			<div class="control-group">

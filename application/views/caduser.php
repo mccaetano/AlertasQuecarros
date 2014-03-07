@@ -6,8 +6,8 @@
 
 					<!-- Form Name -->
 					<legend>
-						Crie uma conta grátis <a href="login">você já tem uma conta
-							Quecarros</a>
+						Crie uma conta grátis <a href="<?php echo base_url();?>usuario/login"><small>você já tem uma conta
+							Quecarros</small></a>
 					</legend>
 
 					<!-- Text input-->

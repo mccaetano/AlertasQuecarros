@@ -41,24 +41,22 @@ body {
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
-				<button type="button" class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a href="#" class="brand"> <img alt="logo"
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+				</a> <a href="<?php echo base_url();?>" class="brand"> <img alt="logo"
 					src="<?php echo base_url();?>assets/img/querocarros.com_148.png">
 				</a>
 				<div class="nav-collapse collapse">
-					<form class="navbar-form navbar-left" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control"
-								placeholder="texto a ser pesquisado">
-						</div>
-						<button type="submit" class="btn btn-default">Pesquisar</button>
+					<form class="navbar-search pull-left">
+						<input type="text" class="search-query span8" placeholder="Search">
 					</form>
+					<ul class="nav pull-right">
+						<li><a href="<?php echo base_url();?>usuario/login">Logar</a></li>
+						<li><a href="<?php echo base_url();?>usuario/novo">Cadastrar-se</a></li>
+					</ul>
 				</div>
-				<a href="#" class="navbar-link">Logar</a> <a href="#">Cadastrar-se</a>
+
 			</div>
 		</div>
 	</div>

@@ -48,9 +48,6 @@ body {
 					src="<?php echo base_url();?>assets/img/querocarros.com_148.png">
 				</a>
 				<div class="nav-collapse collapse">
-					<form class="navbar-search pull-left">
-						<input type="text" class="search-query span8" placeholder="Search">
-					</form>
 					<ul class="nav pull-right">
 						<li><a href="<?php echo base_url();?>usuario/login">Logar</a></li>
 						<li><a href="<?php echo base_url();?>usuario/novo">Cadastrar-se</a></li>

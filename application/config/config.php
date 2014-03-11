@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://www.quecarros.url.ph/';
+$config['base_url']	= 'http://localhost:8081/AlertasQuecarros/';
 
 /*
 |--------------------------------------------------------------------------

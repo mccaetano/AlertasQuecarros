@@ -55,8 +55,8 @@ echo <<<HTML
 				<div class="span4">
 					<select id="iMarca" name="iMarca" class="form-control">
 HTML;
-foreach ($Marcas as $marca) {
-		echo "<option value=\"" . $marca['cd_marca'] . "\">" . $marca['st_marca'] . "</option>" . PHP_EOL;	
+foreach ($marcas as $marca) {
+		echo "					<option value=\"" . $marca['cd_marca'] . "\">" . $marca['st_marca'] . "</option>" . PHP_EOL;	
 }
 echo <<<HTML
 					</select>
@@ -89,8 +89,14 @@ echo <<<HTML
 					</div>
 				</div>
 				<div class="span4">
-					<input id="iModelo" name="iModelo" placeholder="Modelo"
-						class="form-control" type="text">
+					<select id="iModelo" name="iModelo"
+						class="form-control">
+HTML;
+foreach ($modelos as $modelo) {
+		echo "							<option value=\"" . $modelos['cd_modelo'] . "\">" . $modelos['st_modelo'] . "</option>" . PHP_EOL;	
+}
+echo <<<HTML
+					</select>		
 				</div>
 				<div class="span4">
 					<select id="iTipoCombustivel" name="iTipoCombustivel"

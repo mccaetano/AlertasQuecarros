@@ -50,7 +50,7 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'mssql2.websitelive.net';
 $db['default']['username'] = 'itcar';
-$db['default']['password'] = 'RO2342312405';
+$db['default']['password'] = 'Ro2342312405';
 $db['default']['database'] = 'itcar';
 $db['default']['dbdriver'] = 'sqlsrv';
 $db['default']['dbprefix'] = '';

@@ -55,13 +55,10 @@ echo <<<HTML
 				<div class="span4">
 					<select id="iMarca" name="iMarca" class="form-control">
 HTML;
-foreach ($data['Marcas'] as $marcas) {
-		echo "<option value=\"" . $marcas->cd_marca . "\">" . $marcas->st_marcas . "</option>" . PHP_EOL;	
+foreach ($Marcas as $marca) {
+		echo "<option value=\"" . $marca['cd_marca'] . "\">" . $marca['st_marca'] . "</option>" . PHP_EOL;	
 }
 echo <<<HTML
-	
-						<option value="0">Indiferente</option>
-						<option value="2">Só anúncios com imagens</option>
 					</select>
 				</div>
 				<div class="span4">

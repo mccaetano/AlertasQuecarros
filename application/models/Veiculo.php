@@ -7,7 +7,10 @@ class Veiculo extends CI_Model {
 	}
 	
 	function BuscaMarcas() {		
-		$query = $this->db->get('wtb_marcaspordescricao');
-		return $query->result();
+		$query  = $this->db->query('select * from wtb_marcaspordescricao');		
+		$result = $query->result_array();
+		if(count($result) > 0){
+			return $result;
+		}
 	}
 }

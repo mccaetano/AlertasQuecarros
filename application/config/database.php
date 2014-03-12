@@ -50,11 +50,11 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'mssql2.websitelive.net';
 $db['default']['username'] = 'itcar';
-$db['default']['password'] = 'Ro2342312405';
+$db['default']['password'] = 'RO2342312405';
 $db['default']['database'] = 'itcar';
 $db['default']['dbdriver'] = 'sqlsrv';
 $db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = FALSE;
+$db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = FALSE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = '';
@@ -63,7 +63,7 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
-
+$db['default']['port'] = 1433;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

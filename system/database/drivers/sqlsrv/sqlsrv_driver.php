@@ -72,7 +72,6 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 		if(empty($connection['UID']) && empty($connection['PWD'])) {
 			unset($connection['UID'], $connection['PWD']);
 		}
-
 		return sqlsrv_connect($this->hostname, $connection);
 	}
 
@@ -86,7 +85,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	function db_pconnect()
 	{
-		$this->db_connect(TRUE);
+		return  $this->db_connect(TRUE);
 	}
 
 	// --------------------------------------------------------------------
@@ -271,7 +270,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 	 */
 	function affected_rows()
 	{
-		return @sqlrv_rows_affected($this->conn_id);
+		return @sqlsrv_num_rows($this->result_id);
 	}
 
 	// --------------------------------------------------------------------

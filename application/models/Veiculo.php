@@ -13,4 +13,17 @@ class Veiculo extends CI_Model {
 			return $result;
 		}
 	}
+	
+	function BuscaModelos($marca = FALSE) {
+		if (!$marca) { 
+			$query  = $this->db->query('select * from wtb_modelospordescricao');
+		}
+		else {
+			$query  = $this->db->query("select * from wtb_modelospordescricao where cd_marcareferencia = '$marca'");
+		}
+		$result = $query->result_array();
+		if(count($result) > 0){
+			return $result;
+		}
+	}
 }

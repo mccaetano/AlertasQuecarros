@@ -56,7 +56,7 @@ echo <<<HTML
 					<select id="iMarca" name="iMarca" class="form-control">
 HTML;
 foreach ($marcas as $marca) {
-		echo "					<option value=\"" . $marca['cd_marca'] . "\">" . $marca['st_marca'] . "</option>" . PHP_EOL;	
+		echo "					<option value=\"" . $marca->cd_marca . "\">" . $marca->st_marca . "</option>" . PHP_EOL;	
 }
 echo <<<HTML
 					</select>
@@ -93,7 +93,7 @@ echo <<<HTML
 						class="form-control">
 HTML;
 foreach ($modelos as $modelo) {
-		echo "							<option value=\"" . $modelo['cd_modelo'] . "\">" . $modelo['st_modelo'] . "</option>" . PHP_EOL;	
+		echo "							<option value=\"" . $modelo->cd_modelo . "\">" . $modelo->st_modelo . "</option>" . PHP_EOL;	
 }
 echo <<<HTML
 					</select>		
@@ -241,10 +241,10 @@ echo <<<HTML
 </div>
 <script type="text/javascript" language="javascript">
 $(function(){
-	$('#iMarcas').change(function(){
-    	if( $(this).val() ) {
-        	$.get('veiculos/modelocombo/', $(this).val(), function(data){
-            	$('#cod_cidades').html(options);
+	$('#iMarca').change(function(){
+		if( $(this).val() ) {
+        	$.get('veiculos/modelocombo/' .  $(this).val(),function(options){
+            	$('#iModelo').html(options);
 			});
 		}
 	});

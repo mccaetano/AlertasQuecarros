@@ -15,7 +15,7 @@ class Alertas extends CI_Controller {
 		
 		$data["title"] = "Alertas QueCarros";
 		$data["marcas"] = $this->Veiculo->BuscaMarcas();
-		$data["modelos"] = $this->Veiculo->BuscaModelos($data["marcas"][0]['cd_marca']);
+		$data["modelos"] = $this->Veiculo->BuscaModelos($data["marcas"][0]->cd_marca);
 		
 		$this->load->view('templates/header', $data);
 		$this->load->view('editalertas');

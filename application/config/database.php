@@ -47,8 +47,8 @@
 
 $active_group = 'default';
 $active_record = TRUE;
-
-$db['default']['hostname'] = 'mssql2.websitelive.net';
+//mssql2.websitelive.net --> 92.53.240.72
+$db['default']['hostname'] = '92.53.240.72';
 $db['default']['username'] = 'itcar';
 $db['default']['password'] = 'Ro2342312405';
 $db['default']['database'] = 'itcar';
@@ -56,8 +56,8 @@ $db['default']['dbdriver'] = 'sqlsrv';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = FALSE;
-$db['default']['cache_on'] = FALSE;
-$db['default']['cachedir'] = '';
+$db['default']['cache_on'] = TRUE;
+$db['default']['cachedir'] = 'application/cache/';
 $db['default']['char_set'] = 'utf8';
 $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';

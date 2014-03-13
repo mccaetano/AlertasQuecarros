@@ -1,4 +1,4 @@
-<?php 
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 echo <<<HTML
 <div class="container well well-small">
 	<form>
@@ -93,7 +93,7 @@ echo <<<HTML
 						class="form-control">
 HTML;
 foreach ($modelos as $modelo) {
-		echo "							<option value=\"" . $modelos['cd_modelo'] . "\">" . $modelos['st_modelo'] . "</option>" . PHP_EOL;	
+		echo "							<option value=\"" . $modelo['cd_modelo'] . "\">" . $modelo['st_modelo'] . "</option>" . PHP_EOL;	
 }
 echo <<<HTML
 					</select>		
@@ -239,4 +239,15 @@ echo <<<HTML
 		</fieldset>
 	</form>
 </div>
+<script type="text/javascript" language="javascript">
+$(function(){
+	$('#iMarcas').change(function(){
+    	if( $(this).val() ) {
+        	$.get('veiculos/modelocombo/', $(this).val(), function(data){
+            	$('#cod_cidades').html(options);
+			});
+		}
+	});
+});
+</script>
 HTML;

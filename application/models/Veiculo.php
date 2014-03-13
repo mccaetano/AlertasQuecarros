@@ -7,21 +7,25 @@ class Veiculo extends CI_Model {
 	}
 	
 	function BuscaMarcas() {		
-		$query  = $this->db->query('select * from wtb_marcaspordescricao');		
-		$result = $query->result_array();
+		$this->db->cache_on();		
+		$query  = $this->db->query('select * from wtb_marcaspordescricao');
+				
+		$result = $query->result();
 		if(count($result) > 0){
 			return $result;
 		}
 	}
 	
 	function BuscaModelos($marca = FALSE) {
-		if (!$marca) { 
+		$this->db->cache_on();
+		if (!$marca) {			
 			$query  = $this->db->query('select * from wtb_modelospordescricao');
 		}
 		else {
-			$query  = $this->db->query("select * from wtb_modelospordescricao where cd_marca = '$marca'");
-		}
-		$result = $query->result_array();
+			$query  = $this->db->query("select * from wtb_modelospordescricao where cd_marca = $marca");
+		}		
+		
+		$result = $query->result();		
 		if(count($result) > 0){
 			return $result;
 		}

@@ -14,4 +14,15 @@ class Usuario extends CI_Controller {
 		$this->load->view('caduser');
 		$this->load->view('templates/footer', $data);
 	}
+	
+	public function adicionar() {
+		$email = isset($_POST['iEmail']) ? $_POST['iEmail'] : "";
+		$senha = isset($_POST['iSenha']) ? $_POST['iSenha'] : "";
+		$news = isset($_POST['iNews']) ? TRUE : FALSE;
+		
+		$this->load->model('eUsuario');
+		$this->eUsuario->adiciona($email, $senha, $news);
+		index_page();
+		
+	}
 }

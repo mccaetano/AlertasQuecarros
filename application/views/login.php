@@ -19,10 +19,6 @@
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<label class="checkbox"> <input type="checkbox">Desejo receber a newsletter do QueroCarrros.com e promoções de parceiros
-							</label>
-							<label class="checkbox"> <input type="checkbox">Aceito os Termos e Política de Privacidade do QueroCarros.com
-							</label>
 							<label class="checkbox"> <input type="checkbox">Lembrar-me
 							</label>
 							<button class="btn btn-small btn-primary" type="submit">Entrar</button>

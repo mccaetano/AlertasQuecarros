@@ -8,7 +8,7 @@
 			</ul>
 		</div>
 		<div class="span6">
-			<form class="form-horizontal well">
+			<form class="form-horizontal well" action="<?php echo base_url();?>usuario/adicionar" method="post">
 				<fieldset>
 
 					<!-- Form Name -->
@@ -44,6 +44,15 @@
 							<input id="iRepSenha" name="iRepSenha" type="password"
 								placeholder="Preencha sua senha com mánimo 6 dígitos"
 								class="input-xlarge" required="">
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<div class="controls">
+							<label class="checkbox"> <input type="checkbox" id="iNews" name="iNews">Desejo receber a newsletter do QueroCarrros.com e promoções de parceiros
+							</label>
+							<label class="checkbox"> <input type="checkbox" id="iAcc" name="iAcc">Aceito os Termos e Política de Privacidade do QueroCarros.com
+							</label>
 						</div>
 					</div>
 

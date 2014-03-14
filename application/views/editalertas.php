@@ -127,7 +127,8 @@ echo <<<HTML
 								<option value="3">3 portas</option>
 								<option value="4">4 portas</option>
 								<option value="5">5 portas</option>
-							</select>&nbsp;-&nbsp; <select id="iNumeroPortasAte"
+							</select>&nbsp;-&nbsp; 
+						<select id="iNumeroPortasAte"
 								name="iNumeroPortasAte" class="form-control span2">
 								<option value="0">Qualquer</option>
 								<option value="2">2 portas</option>
@@ -175,7 +176,8 @@ echo <<<HTML
 								<option value="100000">100.000 km</option>
 								<option value="150000">150.000 km</option>
 								<option value="200000">200.000 km</option>
-							</select>&nbsp;-&nbsp; <select id="iQuilometragemAte"
+							</select>&nbsp;-&nbsp; 
+							<select id="iQuilometragemAte"
 								name="iQuilometragemAte" class="form-control span2">
 								<option value="0">Qualquer</option>
 								<option value="5000">5.000 km</option>
@@ -240,14 +242,15 @@ echo <<<HTML
 	</form>
 </div>
 <script type="text/javascript" language="javascript">
-$(function(){
-	$('#iMarca').change(function(){
-		if( $(this).val() ) {
-        	$.get('veiculos/modelocombo/' .  $(this).val(),function(options){
-            	$('#iModelo').html(options);
-			});
-		}
-	});
-});
+$(document).ready(function(){
+    $('#iMarca').change(function() {
+		$('#iModelo').html("<option value='0'>Carregando...</option>");
+        $('#iModelo').load('
+HTML;
+echo base_url();
+echo <<<HTML
+veiculos/modelocombo/'+$('#iMarca').val() );
+    });
+});		
 </script>
 HTML;

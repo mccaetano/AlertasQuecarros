@@ -45,7 +45,7 @@ body {
 					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
 				</a> <a href="<?php echo base_url();?>" class="brand"> <img alt="logo"
-					src="<?php echo base_url();?>assets/img/querocarros.com_148.png">
+					src="<?php echo base_url();?>assets/img/querocarros.com.png">
 				</a>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">

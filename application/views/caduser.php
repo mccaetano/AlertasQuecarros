@@ -1,13 +1,20 @@
 <div class="container well well-small">
 	<div class="row">
-		<div class="span12">
-			<form class="form-horizontal">
+		<div class="span6">
+			<h3>Crie sua conta QueroCarros.com agora!</h3>
+			<ul>
+				<li>Crie e gerencie seus alertas personalizados do QueroCarros.com e receba anúncios novos no seu email.</li>
+				<li>Personalize seu perfil de usuário e seus dados cadastrais.</li>
+			</ul>
+		</div>
+		<div class="span6">
+			<form class="form-horizontal well">
 				<fieldset>
 
 					<!-- Form Name -->
 					<legend>
 						Crie uma conta grátis <a href="<?php echo base_url();?>usuario/login"><small>você já tem uma conta
-							Quecarros</small></a>
+							QueroCarros.com!</small></a>
 					</legend>
 
 					<!-- Text input-->

@@ -11,11 +11,11 @@ class Alertas extends CI_Controller {
 	
 	public function edita() {
 		
-		$this->load->model('Veiculo');
+		$this->load->model('eVeiculo');
 		
 		$data["title"] = "Alertas QueCarros";
-		$data["marcas"] = $this->Veiculo->BuscaMarcas();
-		$data["modelos"] = $this->Veiculo->BuscaModelos($data["marcas"][0]->cd_marca);
+		$data["marcas"] = $this->eVeiculo->BuscaMarcas();
+		$data["modelos"] = $this->eVeiculo->BuscaModelos($data["marcas"][0]->cd_marca);
 		
 		$this->load->view('templates/header', $data);
 		$this->load->view('editalertas');

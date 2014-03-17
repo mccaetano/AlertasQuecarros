@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Veiculo extends CI_Model {
+class eVeiculo extends CI_Model {
 	
 	function __construct() {
 		parent::__construct();

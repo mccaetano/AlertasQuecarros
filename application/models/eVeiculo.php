@@ -22,7 +22,7 @@ class eVeiculo extends CI_Model {
 			$query  = $this->db->query('select * from wtb_modelospordescricao');
 		}
 		else {
-			$query  = $this->db->query("select * from wtb_modelospordescricao where cd_marca = $marca");
+			$query  = $this->db->query("select * from wtb_modelospordescricao where (cd_marca = $marca) or (cd_marca = 0)");
 		}		
 		
 		$result = $query->result();		

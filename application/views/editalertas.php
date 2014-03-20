@@ -56,7 +56,7 @@ echo <<<HTML
 					<select id="iMarca" name="iMarca" class="form-control">
 HTML;
 foreach ($marcas as $marca) {
-		echo "					<option value=\"" . $marca->cd_marca . "\">" . $marca->st_marca . "</option>" . PHP_EOL;	
+		echo "					<option value=\"" . $marca->cd_marca . "\">" . ltrim($marca->st_marca) . "</option>" . PHP_EOL;	
 }
 echo <<<HTML
 					</select>
@@ -78,12 +78,22 @@ echo <<<HTML
 					<div class="form-group">
 						<div class="form-controls">
 							<select id="iAnoDe" name="iAnoDe" class="form-control  span2">
-								<option value="1">Option one</option>
-								<option value="2">Option two</option>
+HTML;
+$datein = date_create(getdate());
+date_add($datein, date_interval_create_from_date_string('4 years'));
+$dateout = date_create(getdate());
+date_add($dateout, date_interval_create_from_date_string('-4 years'));
+for ($i=$datein['year'];$i<$dateout['year'];$i++) {
+	echo "								<option value=\"$i\">$i</option>" . PHP_EOL;
+}
+echo <<<HTML
 							</select>&nbsp;-&nbsp; <select id="iAnoAte" name="iAnoAte"
 								class="form-control  span2">
-								<option value="1">Option one</option>
-								<option value="2">Option two</option>
+HTML;
+for ($i=$datein['year'];$i<$dateout['year'];$i++) {
+	echo "								<option value=\"$i\">$i</option>" . PHP_EOL;
+}
+echo <<<HTML
 							</select>
 						</div>
 					</div>
@@ -93,7 +103,7 @@ echo <<<HTML
 						class="form-control">
 HTML;
 foreach ($modelos as $modelo) {
-		echo "							<option value=\"" . $modelo->cd_modelo . "\">" . $modelo->st_modelo . "</option>" . PHP_EOL;	
+		echo "							<option value=\"" . $modelo->cd_modelo . "\">" . ltrim($modelo->st_modelo) . "</option>" . PHP_EOL;	
 }
 echo <<<HTML
 					</select>		

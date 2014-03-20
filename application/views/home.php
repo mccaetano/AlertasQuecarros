@@ -1,4 +1,14 @@
+<?php 
+echo <<<HTML
 <div class="container well well-small">
+	<div class="row">
+		<div class="span6">
+			<h3>Minha de lista alertas</h3>
+		</div>
+		<div class="span6 text-right">
+			<a href="alertas/novo">Adicione um novo alerta</a>
+		</div>
+	</div>
 	<div class="row">
 		<div class="span12">
 			<table class="table table-striped table-bordered">
@@ -11,67 +21,22 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>cell is row 0, column 0</td>
-						<td>cell is row 0, column 1</td>
-						<td>cell is row 0, column 2</td>
-						<td><a href="alertas/edita">Editar</a></td>
-					</tr>
-					<tr>
-						<td>cell is row 1, column 0</td>
-						<td>cell is row 1, column 1</td>
-						<td>cell is row 1, column 2</td>
-						<td>cell is row 1, column 3</td>
-					</tr>
-					<tr>
-						<td>cell is row 2, column 0</td>
-						<td>cell is row 2, column 1</td>
-						<td>cell is row 2, column 2</td>
-						<td>cell is row 2, column 3</td>
-					</tr>
-					<tr>
-						<td>cell is row 3, column 0</td>
-						<td>cell is row 3, column 1</td>
-						<td>cell is row 3, column 2</td>
-						<td>cell is row 3, column 3</td>
-					</tr>
-					<tr>
-						<td>cell is row 4, column 0</td>
-						<td>cell is row 4, column 1</td>
-						<td>cell is row 4, column 2</td>
-						<td>cell is row 4, column 3</td>
-					</tr>
-					<tr>
-						<td>cell is row 5, column 0</td>
-						<td>cell is row 5, column 1</td>
-						<td>cell is row 5, column 2</td>
-						<td>cell is row 5, column 3</td>
-					</tr>
-					<tr>
-						<td>cell is row 6, column 0</td>
-						<td>cell is row 6, column 1</td>
-						<td>cell is row 6, column 2</td>
-						<td>cell is row 6, column 3</td>
-					</tr>
-					<tr>
-						<td>cell is row 7, column 0</td>
-						<td>cell is row 7, column 1</td>
-						<td>cell is row 7, column 2</td>
-						<td>cell is row 7, column 3</td>
-					</tr>
-					<tr>
-						<td>cell is row 8, column 0</td>
-						<td>cell is row 8, column 1</td>
-						<td>cell is row 8, column 2</td>
-						<td>cell is row 8, column 3</td>
-					</tr>
-					<tr>
-						<td>cell is row 9, column 0</td>
-						<td>cell is row 9, column 1</td>
-						<td>cell is row 9, column 2</td>
-						<td>cell is row 9, column 3</td>
-					</tr>
+HTML;
+
+if (isset($alertasLista)) {
+	foreach ($alertasLista as $alerta) {
+		echo "					<tr>";
+		echo "						<td>$alerta->titulo</td>" . PHP_EOL;
+		echo "						<td>$alerta->frequencia</td>" . PHP_EOL;
+		echo "						<td>$alerta->dataalteracao</td>" . PHP_EOL;								
+		echo "						<td><a href='alertas/edita/" .  $alerta->cod_identificacao . "'>Editar</a></td>" . PHP_EOL;
+		echo "					</tr>" . PHP_EOL;
+	}
+}
+echo <<<HTML
 				</tbody>
 			</table>
 		</div>
 	</div>
+HTML;
+	

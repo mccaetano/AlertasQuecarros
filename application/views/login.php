@@ -1,7 +1,8 @@
 <div class="container well well-small">
 	<div class="row">
 		<div class="span12">
-			<form class="form-horizontal">
+		<?php echo validation_errors(); ?>
+   		<?php echo form_open('verifylogin', array('class'=>'form-horizontal')) . PHP_EOL; ?>
 				<fieldset>
 					<legend>Login</legend>
 					<div class="control-group">

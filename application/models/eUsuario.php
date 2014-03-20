@@ -37,10 +37,12 @@ class eUsuario extends CI_Model {
 	
 	function buscaEmail($email = '') {
 		$this->db->cache_on();
-		$query  = $this->db->query("select * from wrl_usuarios_querocarros where email = '$email'");
+		$this->db->from('wrl_usuarios_querocarros');
+		$this->db->where('email', $email);
+		$query  = $this->db->get();
 		
 		$result = $query->result();
-		if(count($result) > 0){
+		if(count($result) > 0) {
 			return $result;
 		}		
 		
@@ -50,11 +52,14 @@ class eUsuario extends CI_Model {
 		$senha = base64_encode($senha);
 		
 		$this->db->cache_on();
-		$query  = $this->db->query("select * from wrl_usuarios_querocarros where email = '$email' and senha = '$senha'");
+		$this->db->select('email. senha');
+		$this->db->from('wrl_usuarios_querocarros');
+		$this->db->where('email', $email);
+		$this->db->where('senha', $senha);
+		$query  = $this->db->get();
 	
-		$result = $query->result();
-		if(count($result) > 0){
-			return TRUE;
+		if($query->num_rows() == 1){
+			return $query->result();
 		} else {
 			return FALSE;
 		}

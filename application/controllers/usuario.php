@@ -2,6 +2,8 @@
 
 class Usuario extends CI_Controller {
 	public function login() {
+		$this->load->helper(array('form'));
+		
 		$data["title"] = "Alertas QueCarros";
 		$this->load->view('templates/header', $data);
 		$this->load->view('login');

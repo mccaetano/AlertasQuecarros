@@ -9,6 +9,20 @@ echo <<<HTML
 				</div>
 			</div>
 			<div class="row">
+				<div class="span12">Título</div>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<div class="form-group">
+						<div class="form-controls">
+HTML;
+echo "							<input type=\"text\" class=\"form-control input-xxlarge\" id=\"iTitulo\" name=\"iTitulo\" placeholder=\"Preencha com o Título\" value=\"" . $alerta[0]->titulo . "\">" . PHP_EOL; 
+echo <<<HTML
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
 				<div class="span4">Preço:</div>
 				<div class="span4">Marca:</div>
 				<div class="span4">Fotos:</div>
@@ -54,6 +68,7 @@ echo <<<HTML
 				</div>
 				<div class="span4">
 					<select id="iMarca" name="iMarca" class="form-control">
+						<option value="0">Indiferente</option>
 HTML;
 foreach ($marcas as $marca) {
 		echo "					<option value=\"" . $marca->cd_marca . "\">" . ltrim($marca->st_marca) . "</option>" . PHP_EOL;	
@@ -78,19 +93,19 @@ echo <<<HTML
 					<div class="form-group">
 						<div class="form-controls">
 							<select id="iAnoDe" name="iAnoDe" class="form-control  span2">
+								<option value="0">Qualquer</option>
 HTML;
-$datein = date_create(getdate());
-date_add($datein, date_interval_create_from_date_string('4 years'));
-$dateout = date_create(getdate());
-date_add($dateout, date_interval_create_from_date_string('-4 years'));
-for ($i=$datein['year'];$i<$dateout['year'];$i++) {
+$datein = date('Y') - 20;
+$dateout = date('Y');
+for ($i=$datein;$i<=$dateout;$i++) {
 	echo "								<option value=\"$i\">$i</option>" . PHP_EOL;
 }
 echo <<<HTML
 							</select>&nbsp;-&nbsp; <select id="iAnoAte" name="iAnoAte"
-								class="form-control  span2">
+								class="form-control  span2">									
+								<option value="0">Qualquer</option>
 HTML;
-for ($i=$datein['year'];$i<$dateout['year'];$i++) {
+for ($i=$datein;$i<=$dateout;$i++) {
 	echo "								<option value=\"$i\">$i</option>" . PHP_EOL;
 }
 echo <<<HTML
@@ -99,12 +114,14 @@ echo <<<HTML
 					</div>
 				</div>
 				<div class="span4">
-					<select id="iModelo" name="iModelo"
-						class="form-control">
+					<select id="iModelo" name="iModelo" class="form-control">
+						<option value="0">Indiferente</option>
 HTML;
+/*
 foreach ($modelos as $modelo) {
 		echo "							<option value=\"" . $modelo->cd_modelo . "\">" . ltrim($modelo->st_modelo) . "</option>" . PHP_EOL;	
 }
+*/
 echo <<<HTML
 					</select>		
 				</div>

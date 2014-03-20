@@ -8,26 +8,30 @@ class eVeiculo extends CI_Model {
 	
 	function BuscaMarcas() {		
 		$this->db->cache_on();		
-		$query  = $this->db->query('select * from wtb_marcaspordescricao');
+		$this->db->order_by("st_marca", "asc");
+		$query  = $this->db->get("wtb_marcas");
 				
 		$result = $query->result();
 		if(count($result) > 0){
 			return $result;
+		} else {
+			return FALSE;
 		}
 	}
 	
 	function BuscaModelos($marca = FALSE) {
 		$this->db->cache_on();
-		if (!$marca) {			
-			$query  = $this->db->query('select * from wtb_modelospordescricao');
-		}
-		else {
-			$query  = $this->db->query("select * from wtb_modelospordescricao where (cd_marca = $marca) or (cd_marca = 0)");
-		}		
+		if ($marca) {			
+			$this->db->where("cd_marca", $marca);
+		}	
+		$this->db->order_by("st_modelo", "asc");		
+		$query  = $this->db->get("wtb_modelos");
 		
 		$result = $query->result();		
 		if(count($result) > 0){
 			return $result;
+		} else {
+			return FALSE;
 		}
 	}
 }

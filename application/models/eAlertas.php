@@ -25,13 +25,16 @@ class eAlertas extends CI_Model {
 	
 	}
 
-	function buscaAlerta($cd_identificacao = 0) {
+	function buscaAlerta($cod_identificacao = 0) {
 		$this->db->cache_on();
-		$query  = $this->db->query("select * from wtb_alertas_querocarros where cd_identificacao = $cd_identificacao");
+		$this->db->where('cod_identificacao', $cod_identificacao);
+		$query  = $this->db->get('wtb_alertas_querocarros');
 
 		$result = $query->result();
 		if(count($result) > 0){
 			return $result;
+		} else {
+			return FALSE;
 		}
 
 	}
@@ -43,6 +46,8 @@ class eAlertas extends CI_Model {
 		$result = $query->result();		
 		if(count($result) > 0){
 			return $result;
+		} else {
+			return FALSE;
 		}
 
 

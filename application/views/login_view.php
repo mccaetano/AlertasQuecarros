@@ -12,20 +12,21 @@ if ($formValidator != '') {
 ?>
 		</div>		
 		<div class="span12">
-	   		<?php echo form_open('verifylogin', array('class'=>'form-horizontal')) . PHP_EOL; ?>
+	   		<?php echo form_open('login/validate', array('class'=>'form-horizontal')) . PHP_EOL; ?>
 				<fieldset>
 					<legend>Login</legend>
 					<div class="control-group">
 						<label class="control-label" for="iloginEmail">Email</label>
 						<div class="controls">
-							<input type="text" id="iloginEmail"
-								placeholder="Endereço de Email">
+							<input type="text" id="iloginEmail" name="iloginEmail"
+								placeholder="Endereço de Email" value="<?php echo set_value('iloginEmail'); ?>">
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="iloginSenha">Senha</label>
 						<div class="controls">
-							<input type="text" id="iloginSenha" placeholder="Senha">
+							<input type="text" id="iloginSenha"  name="iloginSenha"
+							placeholder="Senha">
 						</div>
 					</div>
 					<div class="control-group">

@@ -1,5 +1,18 @@
 <div class="container well well-small">
 	<div class="row">
+		<div class="span12">
+<?php
+$formValidator = validation_errors();
+if ($formValidator != '') {
+	echo "			<div class=\"alert\">" . PHP_EOL;
+	echo "		  		<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>" . PHP_EOL;
+	echo "					$formValidator" .PHP_EOL; 
+	echo  "		  	</div>". PHP_EOL;
+}
+?>
+		</div>
+	</div>
+	<div class="row">
 		<div class="span6">
 			<h3>Crie sua conta QueroCarros.com agora!</h3>
 			<ul>
@@ -8,12 +21,12 @@
 			</ul>
 		</div>
 		<div class="span6">
-			<form class="form-horizontal well" action="<?php echo base_url();?>usuario/adicionar" method="post">
+<?php echo form_open('usuario/adicionar', array('class'=>'form-horizontal')) . PHP_EOL; ?>
 				<fieldset>
 
 					<!-- Form Name -->
 					<legend>
-						Crie uma conta grátis <a href="<?php echo base_url();?>usuario/login"><small>você já tem uma conta
+						Crie uma conta grátis <a href="<?php echo base_url();?>login"><small>você já tem uma conta
 							QueroCarros.com!</small></a>
 					</legend>
 
@@ -23,7 +36,7 @@
 						<div class="controls">
 							<input id="iEmail" name="iEmail" type="text"
 								placeholder="Preencha seu email aqui" class="input-xlarge"
-								required="">
+								required="" value='<?php echo set_value('iEmail'); ?>'>
 						</div>
 					</div>
 

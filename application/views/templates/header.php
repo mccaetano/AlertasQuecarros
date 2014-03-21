@@ -41,19 +41,60 @@ body {
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a href="<?php echo base_url();?>" class="brand"> <img alt="logo"
-					src="<?php echo base_url();?>assets/img/querocarros.com.png">
-				</a>
-				<div class="nav-collapse collapse">
-					<ul class="nav pull-right">
-						<li><a href="<?php echo base_url();?>usuario/login">Logar</a></li>
-						<li><a href="<?php echo base_url();?>usuario/novo">Cadastrar-se</a></li>
-					</ul>
+				<div class="row">
+					<div class="span6">
+						<a class="btn btn-navbar" data-toggle="collapse"
+							data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span>
+						</a> <a href="<?php echo base_url();?>" class="brand"> <img alt="logo"
+							src="<?php echo base_url();?>assets/img/querocarros.com.png">
+						</a>
+					</div>
+					<div class="span6">
+						<div class="nav-collapse collapse">
+<?php
+if($this->session->userdata('logged_in')) {
+	$session_data = $this->session->userdata('logged_in');
+		
+	$this->load->model('eAlertas');
+	$data["alertasLista"] = $this->eAlertas->listaAlertas();
+	$data["title"] = "Alertas QueCarros";
+	$data['email'] = $session_data['email'];
+echo <<<HTML
+						<div class="container">
+							<div class="row">
+								<div class="span4 offset4">
+									<div class="btn-group">
+									  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+											<i class="icon-user"></i> 
+HTML;
+echo $session_data['email'] . PHP_EOL;
+echo <<<HTML
+										    <span class="caret"></span>
+										  </a>
+										  <ul class="dropdown-menu">
+HTML;
+echo "										<li><a href=\"" . base_url() . "login/logout\"><i class=\"icon-off\"></i> Sair</a></li>";
+echo <<<HTML
+										  </ul>
+									</div>
+								</div>
+							</div>
+						</div>
+HTML;
+} else {
+	echo <<<HTML
+						<ul class="nav pull-right">
+							<li><a href="<?php echo base_url();?>login">Logar</a></li>
+							<li><a href="<?php echo base_url();?>usuario/novo">Cadastrar-se</a></li>
+						</ul>
+HTML;
+}
+?>					
+					
+						</div>
+					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>

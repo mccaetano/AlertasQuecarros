@@ -3,7 +3,7 @@ echo <<<HTML
 <div class="container well well-small">
 	<div class="row">
 		<div class="span6">
-			<h3>Minha de lista alertas</h3>
+			<h3><i class="icon-list"></i> Minha de lista alertas</h3>
 		</div>
 		<div class="span6 text-right">
 			<a href="alertas/novo">Adicione um novo alerta</a>

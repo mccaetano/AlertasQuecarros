@@ -9,11 +9,23 @@ class Login extends CI_Controller {
 	
 	function index() {
 		$this->load->helper(array('form'));
-		
-		$data["title"] = "Alertas QueCarros";
-		$this->load->view('templates/header', $data);
-		$this->load->view('login_view');
-		$this->load->view('templates/footer', $data);
+				
+		if($this->session->userdata('logged_in')) {
+			$session_data = $this->session->userdata('logged_in');
+				
+			$this->load->model('eAlertas');
+			$data["alertasLista"] = $this->eAlertas->listaAlertas();
+			$data["title"] = "Alertas QueCarros";
+			$data['email'] = $session_data['email'];
+			$this->load->view('templates/header', $data);
+			$this->load->view('home', $data);
+			$this->load->view('templates/footer', $data);
+		} else {
+			$data["title"] = "Alertas QueCarros";
+			$this->load->view('templates/header', $data);
+			$this->load->view('login_view');
+			$this->load->view('templates/footer', $data);
+		}
 	}
 	
 	function validate() {
@@ -44,7 +56,7 @@ class Login extends CI_Controller {
 			foreach($result as $row)
 				{
 					$sess_array = array(
-							'username' => $row->st_mail
+							'email' => $row->st_email
 					);
 					$this->session->set_userdata('logged_in', $sess_array);
 				}
@@ -55,6 +67,13 @@ class Login extends CI_Controller {
 			$this->form_validation->set_message('check_database', 'Email ou Senha inválidos');
 			return false;
 		}
+	}
+	
+	
+	function logout()
+	{
+		$this->session->sess_destroy();
+		redirect('home', 'refresh');
 	}
 	
 	

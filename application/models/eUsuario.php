@@ -8,20 +8,16 @@ class eUsuario extends CI_Model {
 	
 	function adiciona($email, $senha, $recebenws = FALSE) {
 		
-		$this->db->set('st_usuario', $email);
+		//$this->db->set('st_usuario', $email);
 		$this->db->set('st_email', $email);
-		$this->db->set('st_senha', base64_encode($senha));
-		
+		$this->db->set('st_senha', $senha);		
 		$retorno = $this->db->insert('wrl_usuarios_querocarros');
 		
-		
-		$news = array(
-				"st_email"=>$email,
-				"st_nome"=>$email,
-				"fl_receber"=>$recebenws,
-				"dt_cadastro"=>date('Y-m-d H:i:s.u', time())
-		);
-		$this->db->insert('wtb_receber_promocoes', $news);			
+		$this->db->set('st_email', $email);
+		$this->db->set('st_nome', $email);
+		$this->db->set('fl_receber', $recebenws);
+		$this->db->set('dt_cadastro', date('Y-m-d H:i:s.u', time()));
+		$this->db->insert('wtb_receber_promocoes');			
 		
 		return $retorno;
 	}
@@ -40,7 +36,7 @@ class eUsuario extends CI_Model {
 	}
 	
 	function validaUsuario($email = '',  $senha = '') {
-		$senha = base64_encode($senha);
+		//$senha = base64_encode($senha);
 		
 		$this->db->cache_on();
 		$this->db->select('st_email, st_senha');

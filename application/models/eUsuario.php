@@ -23,7 +23,6 @@ class eUsuario extends CI_Model {
 	}
 	
 	function buscaEmail($email = '') {
-		$this->db->cache_on();
 		$this->db->from('wrl_usuarios_querocarros');
 		$this->db->where('st_email', $email);
 		$query  = $this->db->get();
@@ -38,7 +37,6 @@ class eUsuario extends CI_Model {
 	function validaUsuario($email = '',  $senha = '') {
 		//$senha = base64_encode($senha);
 		
-		$this->db->cache_on();
 		$this->db->select('st_email, st_senha');
 		$this->db->from('wrl_usuarios_querocarros');
 		$this->db->where('st_email', $email);

@@ -23,12 +23,12 @@ echo <<<HTML
 				<tbody>
 HTML;
 
-if (isset($alertasLista)) {
+if ($alertasLista != FALSE) {
 	foreach ($alertasLista as $alerta) {
 		echo "					<tr>";
 		echo "						<td>$alerta->titulo</td>" . PHP_EOL;
-		echo "						<td>$alerta->frequencia</td>" . PHP_EOL;
-		echo "						<td>$alerta->dataalteracao</td>" . PHP_EOL;								
+		echo "						<td>" . ($alerta->frequencia == 0 ? "Diária" : "Semanal") . "</td>" . PHP_EOL;
+		echo "						<td>" .  date_format(date_create($alerta->dataalteracao), "d/m/y h:i:s") . "</td>" . PHP_EOL;								
 		echo "						<td><a href='alertas/edita/" .  $alerta->cod_identificacao . "'>Editar</a></td>" . PHP_EOL;
 		echo "					</tr>" . PHP_EOL;
 	}

@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="span12">
 			<div class="well well-small">
-				<form class="form-horizontal" action="<?php echo base_url(); ?>alertas/adiciona" method="post">
+			<?php form_open("alertas/adiciona", array("class"=>"form-horizontal")) ?>
 					<fieldset>
 
 						<!-- Form Name -->
@@ -12,9 +12,10 @@
 						<div class="control-group">
 							<div class="controls">
 								<div class="input-append">
+									<?php form_in ?>
 									<input id="inewalert" name="inewalert" class="input-xlarge"
 										placeholder="preencha aqui o titulo do seu alerta" type="text"
-										required=""> 
+										required="" value='<?php set_value('inewalert') ?>' > 
 									<button type="submit" class="btn">Enviar</button>
 								</div>
 

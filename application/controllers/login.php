@@ -5,27 +5,32 @@ class Login extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('eUsuario', '', TRUE);
+		$this->load->helper(array('form'));
 	}
 	
 	function index() {
-		$this->load->helper(array('form'));
-				
-		if($this->session->userdata('logged_in')) {
-			$session_data = $this->session->userdata('logged_in');
-				
-			$this->load->model('eAlertas');
-			$data["alertasLista"] = $this->eAlertas->listaAlertas();
-			$data["title"] = "Alertas QueCarros";
-			$data['email'] = $session_data['email'];
-			$this->load->view('templates/header', $data);
-			$this->load->view('home', $data);
-			$this->load->view('templates/footer', $data);
-		} else {
+		if(!$this->session->userdata('logged_in')) {
 			$data["title"] = "Alertas QueCarros";
 			$this->load->view('templates/header', $data);
 			$this->load->view('login_view');
 			$this->load->view('templates/footer', $data);
+			return;
 		}
+		$session_data = $this->session->userdata('logged_in');
+		$email = $session_data['email'];
+
+		redirect('home', 'refresh');
+		/*
+		
+		$this->load->model('eAlertas');
+		$data["alertasLista"] = $this->eAlertas->listaAlertas($email);
+		$data["title"] = "Alertas QueCarros";
+		$data['email'] = $session_data['email'];
+		$this->load->view('templates/header', $data);
+		$this->load->view('home_view', $data);
+		$this->load->view('templates/footer', $data);
+		*/
+		
 	}
 	
 	function validate() {

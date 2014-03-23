@@ -22,8 +22,8 @@ class Usuario extends CI_Controller {
 		$this->load->library('form_validation');
 		
 		$this->form_validation->set_rules('iEmail', 'Email', 'trim|required|xss_clean|valid_email|callback_checa_email_cadastrado');
-		$this->form_validation->set_rules('iSenha', 'Senha', 'trim|required|xss_clean|matches[iRepSenha]');
-		$this->form_validation->set_rules('iRepSenha', 'Repetir Senha', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('iSenha', 'Senha', 'trim|required|xss_clean|max_length[10]|matches[iRepSenha]');
+		$this->form_validation->set_rules('iRepSenha', 'Repetir Senha', 'trim|required|xss_clean|max_length[10]');
 		
 		if($this->form_validation->run() == FALSE)	{
 			$this->novo();

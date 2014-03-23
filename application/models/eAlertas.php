@@ -26,7 +26,6 @@ class eAlertas extends CI_Model {
 	}
 
 	function buscaAlerta($cod_identificacao = 0) {
-		$this->db->cache_on();
 		$this->db->where('cod_identificacao', $cod_identificacao);
 		$query  = $this->db->get('wtb_alertas_querocarros');
 
@@ -39,8 +38,9 @@ class eAlertas extends CI_Model {
 
 	}
 
-	function listaAlertas() {
-		$this->db->cache_on();
+	function listaAlertas($email) {
+		
+		$this->db->where('email', $email);
 		$query  = $this->db->get("wtb_alertas_querocarros");
 
 		$result = $query->result();		

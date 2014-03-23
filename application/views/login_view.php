@@ -25,7 +25,7 @@ if ($formValidator != '') {
 					<div class="control-group">
 						<label class="control-label" for="iloginSenha">Senha</label>
 						<div class="controls">
-							<input type="text" id="iloginSenha"  name="iloginSenha"
+							<input type="password" id="iloginSenha"  name="iloginSenha"
 							placeholder="Senha">
 						</div>
 					</div>

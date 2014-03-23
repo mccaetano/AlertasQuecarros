@@ -1,29 +1,59 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Alertas extends CI_Controller {
+	
+	function __construct() {
+		parent::__construct();
+		$this->load->helper(array('form'));
+	}
+	
 	public function novo() {
+		if(!$this->session->userdata('logged_in')) {
+			//If no session, redirect to login page
+			redirect('login', 'refresh');
+		}
+		$session_data = $this->session->userdata('logged_in');
+		$email = $session_data['email'];
+		
+		$data["email"] = $email;
 		$data["title"] = "Alertas QueCarros";
-		//$data["customcss"] = "<link href=\"" . base_url() . "assets/css/signin.css\" rel=\"stylesheet\">";
 		$this->load->view('templates/header', $data);
-		$this->load->view('cadalertas');
+		$this->load->view('alertas_novo_view');
 		$this->load->view('templates/footer', $data);
 	}
 	
 	public function edita($id) {
+		if(!$this->session->userdata('logged_in')) {
+			//If no session, redirect to login page
+			redirect('login', 'refresh');
+		}
+		$session_data = $this->session->userdata('logged_in');
+		$email = $session_data['email'];
 		
+				
 		$this->load->model('eVeiculo');
 		$this->load->model('eAlertas');
 		$data["title"] = "Alertas QueCarros";
 		$data["marcas"] = $this->eVeiculo->BuscaMarcas();
+		$data["email"] = $email;
 		$data["alerta"] = $this->eAlertas->buscaAlerta($id);
 		
 		$this->load->view('templates/header', $data);
-		$this->load->view('editalertas', $data);
+		$this->load->view('alertas_edita_view', $data);
 		$this->load->view('templates/footer', $data);
+		
 	}
 	
 	public function adiciona() {
-	
+		if(!$this->session->userdata('logged_in')) {
+			//If no session, redirect to login page
+			redirect('login', 'refresh');
+		}
+		$session_data = $this->session->userdata('logged_in');
+		$email = $session_data['email'];
+		
+		
+		
 		$this->load->model('eAlertas');
 		
 		$alerta = array(
@@ -46,13 +76,14 @@ class Alertas extends CI_Controller {
 			'tipo'=>0,
 			'frequencia'=>0,
 			'precoReduzido'=>0,
-			'email'=>"marcelo.cheruti@gmail.com"
+			'email'=>$email
 		);
 		$return = $this->eAlertas->adiciona($alerta);
 		if (!$return) {
 			redirect(base_url() ."alertas/novo");
 		} else {
-			redirect(base_url());
+			$this->db->cache_delete('home', 'index');
+			redirect('home', 'refresh');
 		}
 	}
 }

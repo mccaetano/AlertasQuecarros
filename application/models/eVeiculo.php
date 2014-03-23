@@ -7,7 +7,6 @@ class eVeiculo extends CI_Model {
 	}
 	
 	function BuscaMarcas() {		
-		$this->db->cache_on();		
 		$this->db->order_by("st_marca", "asc");
 		$query  = $this->db->get("wtb_marcas");
 				
@@ -20,7 +19,6 @@ class eVeiculo extends CI_Model {
 	}
 	
 	function BuscaModelos($marca = FALSE) {
-		$this->db->cache_on();
 		if ($marca) {			
 			$this->db->where("cd_marca", $marca);
 		}	

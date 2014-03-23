@@ -1,5 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-echo <<<HTML
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <div class="container well well-small">
 	<form>
 		<fieldset>
@@ -15,9 +14,9 @@ echo <<<HTML
 				<div class="span12">
 					<div class="form-group">
 						<div class="form-controls">
-HTML;
+<?php 
 echo "							<input type=\"text\" class=\"form-control input-xxlarge\" id=\"iTitulo\" name=\"iTitulo\" placeholder=\"Preencha com o Título\" value=\"" . $alerta[0]->titulo . "\">" . PHP_EOL; 
-echo <<<HTML
+?>
 						</div>
 					</div>
 				</div>
@@ -69,11 +68,11 @@ echo <<<HTML
 				<div class="span4">
 					<select id="iMarca" name="iMarca" class="form-control">
 						<option value="0">Indiferente</option>
-HTML;
+<?php 
 foreach ($marcas as $marca) {
 		echo "					<option value=\"" . $marca->cd_marca . "\">" . ltrim($marca->st_marca) . "</option>" . PHP_EOL;	
 }
-echo <<<HTML
+?>
 					</select>
 				</div>
 				<div class="span4">
@@ -94,21 +93,21 @@ echo <<<HTML
 						<div class="form-controls">
 							<select id="iAnoDe" name="iAnoDe" class="form-control  span2">
 								<option value="0">Qualquer</option>
-HTML;
+<?php 
 $datein = date('Y') - 20;
 $dateout = date('Y');
 for ($i=$datein;$i<=$dateout;$i++) {
 	echo "								<option value=\"$i\">$i</option>" . PHP_EOL;
 }
-echo <<<HTML
+?>
 							</select>&nbsp;-&nbsp; <select id="iAnoAte" name="iAnoAte"
 								class="form-control  span2">									
 								<option value="0">Qualquer</option>
-HTML;
+<?php 
 for ($i=$datein;$i<=$dateout;$i++) {
 	echo "								<option value=\"$i\">$i</option>" . PHP_EOL;
 }
-echo <<<HTML
+?>
 							</select>
 						</div>
 					</div>
@@ -116,13 +115,13 @@ echo <<<HTML
 				<div class="span4">
 					<select id="iModelo" name="iModelo" class="form-control">
 						<option value="0">Indiferente</option>
-HTML;
+<?php 
 /*
 foreach ($modelos as $modelo) {
 		echo "							<option value=\"" . $modelo->cd_modelo . "\">" . ltrim($modelo->st_modelo) . "</option>" . PHP_EOL;	
 }
 */
-echo <<<HTML
+?>
 					</select>		
 				</div>
 				<div class="span4">
@@ -261,8 +260,8 @@ echo <<<HTML
 					<a href="#">Cancelar Alerta</a>
 				</div>
 				<div class="span4">
-					<button type="submit" class="btn btn-primary">Enviar</button>
-					<button type="button" class="btn">Cancelar</button>
+					<button type="submit" class="btn btn-primary">Gravar</button>
+					<button type="button" class="btn" id="bVoltar">Voltar</button>
 				</div>
 			</div>
 		</fieldset>
@@ -270,14 +269,13 @@ echo <<<HTML
 </div>
 <script type="text/javascript" language="javascript">
 $(document).ready(function(){
+	$('#bVoltar').click(function() {
+		$(location).attr('href',"<?php echo base_url();?>home");
+	});
+	$('#iMarca').load('<?php echo base_url();?>veiculos/marcacombo/').val() );
     $('#iMarca').change(function() {
 		$('#iModelo').html("<option value='0'>Carregando...</option>");
-        $('#iModelo').load('
-HTML;
-echo base_url();
-echo <<<HTML
-veiculos/modelocombo/'+$('#iMarca').val() );
+        $('#iModelo').load('<?php echo base_url();?>veiculos/modelocombo/'+$('#iMarca').val() );
     });
 });		
 </script>
-HTML;

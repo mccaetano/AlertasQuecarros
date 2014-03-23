@@ -54,13 +54,7 @@ body {
 						<div class="nav-collapse collapse">
 <?php
 if($this->session->userdata('logged_in')) {
-	$session_data = $this->session->userdata('logged_in');
-		
-	$this->load->model('eAlertas');
-	$data["alertasLista"] = $this->eAlertas->listaAlertas();
-	$data["title"] = "Alertas QueCarros";
-	$data['email'] = $session_data['email'];
-echo <<<HTML
+	echo <<<HTML
 						<div class="container">
 							<div class="row">
 								<div class="span4 offset4">
@@ -68,14 +62,14 @@ echo <<<HTML
 									  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 											<i class="icon-user"></i> 
 HTML;
-echo $session_data['email'] . PHP_EOL;
-echo <<<HTML
+	echo $email . PHP_EOL;
+	echo <<<HTML
 										    <span class="caret"></span>
 										  </a>
 										  <ul class="dropdown-menu">
 HTML;
-echo "										<li><a href=\"" . base_url() . "login/logout\"><i class=\"icon-off\"></i> Sair</a></li>";
-echo <<<HTML
+	echo "										<li><a href=\"" . base_url() . "login/logout\"><i class=\"icon-off\"></i> Sair</a></li>";
+	echo <<<HTML
 										  </ul>
 									</div>
 								</div>
@@ -83,12 +77,10 @@ echo <<<HTML
 						</div>
 HTML;
 } else {
-	echo <<<HTML
-						<ul class="nav pull-right">
-							<li><a href="<?php echo base_url();?>login">Logar</a></li>
-							<li><a href="<?php echo base_url();?>usuario/novo">Cadastrar-se</a></li>
-						</ul>
-HTML;
+	echo "						<ul class=\"nav pull-right\">" . PHP_EOL;
+	echo "							<li><a href=\"" . base_url() . "login\">Logar</a></li>" . PHP_EOL;
+	echo "							<li><a href=\"" . base_url() . "usuario/novo\">Cadastrar-se</a></li>" . PHP_EOL;
+	echo "						</ul>" . PHP_EOL;
 }
 ?>					
 					

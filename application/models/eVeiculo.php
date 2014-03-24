@@ -6,7 +6,8 @@ class eVeiculo extends CI_Model {
 		parent::__construct();
 	}
 	
-	function BuscaMarcas() {		
+	function BuscaMarcas() {
+		$this->db->select("cd_marca, st_marca");
 		$this->db->order_by("st_marca", "asc");
 		$query  = $this->db->get("wtb_marcas");
 				
@@ -19,6 +20,7 @@ class eVeiculo extends CI_Model {
 	}
 	
 	function BuscaModelos($marca = FALSE) {
+		$this->db->select("cd_modelo, st_modelo");
 		if ($marca) {			
 			$this->db->where("cd_marca", $marca);
 		}	

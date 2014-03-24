@@ -31,7 +31,7 @@ if ($formValidator != '') {
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<label class="checkbox"> <input type="checkbox">Lembrar-me
+							<label class="checkbox"> <input type="checkbox" checked="checked">Lembrar-me
 							</label>
 							<button class="btn btn-small btn-primary" type="submit">Entrar</button>
 						</div>

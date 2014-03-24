@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <div class="container well well-small">
-	<form>
+	<?php echo form_open("alertas/altera", array("class"=>"form-horizontal")) ?>
 		<fieldset>
 			<div class="row">
 				<div class="span12">
@@ -14,9 +14,7 @@
 				<div class="span12">
 					<div class="form-group">
 						<div class="form-controls">
-<?php 
-echo "							<input type=\"text\" class=\"form-control input-xxlarge\" id=\"iTitulo\" name=\"iTitulo\" placeholder=\"Preencha com o Título\" value=\"" . $alerta[0]->titulo . "\">" . PHP_EOL; 
-?>
+							<input type="text" class="form-control input-xxlarge" id="iTitulo" name="iTitulo" placeholder="Preencha com o Título" value="<?php echo $alerta[0]->titulo ?>">
 						</div>
 					</div>
 				</div>
@@ -31,47 +29,33 @@ echo "							<input type=\"text\" class=\"form-control input-xxlarge\" id=\"iTit
 					<div class="form-group">
 						<div class="controls">
 							<select id="iPrecoDe" name="iPrecoDe" class="form-control span2">
-								<option value="0">Qualquer</option>
-								<option value="5000">5.000,00</option>
-								<option value="10000">10.000,00</option>
-								<option value="20000">20.000,00</option>
-								<option value="30000">30.000,00</option>
-								<option value="40000">40.000,00</option>
-								<option value="50000">50.000,00</option>
-								<option value="60000">60.000,00</option>
-								<option value="70000">70.000,00</option>
-								<option value="80000">80.000,00</option>
-								<option value="90000">90.000,00</option>
-								<option value="100000">100.000,00</option>
-								<option value="150000">150.000,00</option>
-								<option value="200000">200.000,00</option>
-							</select>&nbsp;-&nbsp; <select id="iPrecoAte" name="iPrecoAte"
+<?php 
+	for ($i=0; $i<=200000;$i=$i+10000) {
+		$selected = $alerta[0]->precoDe == $i ? "selected" : "";
+		$value = $i == 0  ? "Qualquer" : number_format($i, 2, ",", ".");
+		echo "								<option value=\"$i\" $selected>$value</option>" . PHP_EOL; 
+	}
+?>							
+							</select>&nbsp;-&nbsp; 
+							<select id="iPrecoAte" name="iPrecoAte"
 								class="form-control span2">
-								<option value="0">Qualquer</option>
-								<option value="5000">5.000,00</option>
-								<option value="10000">10.000,00</option>
-								<option value="20000">20.000,00</option>
-								<option value="30000">30.000,00</option>
-								<option value="40000">40.000,00</option>
-								<option value="50000">50.000,00</option>
-								<option value="60000">60.000,00</option>
-								<option value="70000">70.000,00</option>
-								<option value="80000">80.000,00</option>
-								<option value="90000">90.000,00</option>
-								<option value="100000">100.000,00</option>
-								<option value="150000">150.000,00</option>
-								<option value="200000">200.000,00</option>
-							</select>
+<?php 
+	for ($i=0; $i<=200000;$i=$i+10000) {
+		$selected = $alerta[0]->precoAte == $i ? "selected" : "";
+		$value = $i == 0  ? "Qualquer" : number_format($i, 2, ",", ".");
+		echo "								<option value=\"$i\" $selected>$value</option>" . PHP_EOL; 
+	}
+?>							
+															</select>
 						</div>
 					</div>
 				</div>
 				<div class="span4">
 					<select id="iMarca" name="iMarca" class="form-control">
-						<option value="0">Indiferente</option>
 <?php 
-foreach ($marcas as $marca) {
+/*foreach ($marcas as $marca) {
 		echo "					<option value=\"" . $marca->cd_marca . "\">" . ltrim($marca->st_marca) . "</option>" . PHP_EOL;	
-}
+}*/
 ?>
 					</select>
 				</div>
@@ -245,7 +229,7 @@ foreach ($modelos as $modelo) {
 			<div class="row">
 				<div class="span8"></div>
 				<div class="span4">
-					<label class="checkbox"> <input type="checkbox" value=""> Preço
+					<label class="checkbox"> <input type="checkbox" value="" id="iPrecoReduzido" name="iPrecoReduzido"> Preço
 						Reduzido
 					</label>
 				</div>
@@ -272,10 +256,11 @@ $(document).ready(function(){
 	$('#bVoltar').click(function() {
 		$(location).attr('href',"<?php echo base_url();?>home");
 	});
-	$('#iMarca').load('<?php echo base_url();?>veiculos/marcacombo/').val() );
+	$('#iMarca').html("<option value='0'>Carregando...</option>");
+	//$('#iMarca').load('<?php echo base_url();?>veiculos/marcacombo/'+$('#iMarca').val()' ));
     $('#iMarca').change(function() {
 		$('#iModelo').html("<option value='0'>Carregando...</option>");
-        $('#iModelo').load('<?php echo base_url();?>veiculos/modelocombo/'+$('#iMarca').val() );
+        $('#iModelo').load('<?php echo base_url();?>veiculos/modelocombo/'+$('#iMarca').val()+'/<?php echo $alerta[0]->marca;?>' );
     });
 });		
 </script>

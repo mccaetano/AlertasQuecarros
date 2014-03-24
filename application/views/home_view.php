@@ -1,5 +1,4 @@
-<?php 
-echo <<<HTML
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?> 
 <div class="container well well-small">
 	<div class="row">
 		<div class="span6">
@@ -21,7 +20,7 @@ echo <<<HTML
 					</tr>
 				</thead>
 				<tbody>
-HTML;
+<?php 
 
 if ($alertasLista != FALSE) {
 	foreach ($alertasLista as $alerta) {
@@ -33,10 +32,9 @@ if ($alertasLista != FALSE) {
 		echo "					</tr>" . PHP_EOL;
 	}
 }
-echo <<<HTML
+?>
 				</tbody>
 			</table>
 		</div>
 	</div>
-HTML;
-	
+</div>

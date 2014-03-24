@@ -5,7 +5,7 @@ class Login extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('eUsuario', '', TRUE);
-		$this->load->helper(array('form'));
+		$this->load->helper(array('form', 'url'));
 	}
 	
 	function index() {
@@ -34,7 +34,6 @@ class Login extends CI_Controller {
 	}
 	
 	function validate() {
-		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 		
 		$this->form_validation->set_rules('iloginEmail', 'Email', 'trim|required|xss_clean|valid_email');
@@ -79,6 +78,24 @@ class Login extends CI_Controller {
 	{
 		$this->session->sess_destroy();
 		redirect('home', 'refresh');
+	}
+	
+	function alteraemail() {
+		if(!$this->session->userdata('logged_in')) {
+			$data["title"] = "Alertas QueCarros";
+			$this->load->view('templates/header', $data);
+			$this->load->view('login_view');
+			$this->load->view('templates/footer', $data);
+			return;
+		}
+		$session_data = $this->session->userdata('logged_in');
+		$email = $session_data['email'];
+
+		$data["title"] = "Alertas QueCarros";
+		$data["email"] = $email;
+		$this->load->view('templates/header', $data);
+		$this->load->view('login_altera_email_view', $data);
+		$this->load->view('templates/footer', $data);
 	}
 	
 	

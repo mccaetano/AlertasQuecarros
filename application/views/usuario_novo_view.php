@@ -1,3 +1,4 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <div class="container well well-small">
 	<div class="row">
 		<div class="span12">

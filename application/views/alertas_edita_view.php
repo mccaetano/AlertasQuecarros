@@ -26,8 +26,8 @@
 			</div>
 			<div class="row">
 				<div class="span4">
-					<div class="form-group">
-						<div class="controls">
+					<div class="row">
+						<div class="span2">
 							<select id="iPrecoDe" name="iPrecoDe" class="form-control span2">
 <?php 
 	for ($i=0; $i<=200000;$i=$i+10000) {
@@ -36,7 +36,9 @@
 		echo "								<option value=\"$i\" $selected>$value</option>" . PHP_EOL; 
 	}
 ?>							
-							</select>&nbsp;-&nbsp; 
+							</select>
+						</div>
+						<div class="span2"> 
 							<select id="iPrecoAte" name="iPrecoAte"
 								class="form-control span2">
 <?php 
@@ -46,7 +48,7 @@
 		echo "								<option value=\"$i\" $selected>$value</option>" . PHP_EOL; 
 	}
 ?>							
-															</select>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -73,8 +75,8 @@
 			</div>
 			<div class="row">
 				<div class="span4">
-					<div class="form-group">
-						<div class="form-controls">
+					<div class="row">
+						<div class="span2">
 							<select id="iAnoDe" name="iAnoDe" class="form-control  span2">
 								<option value="0">Qualquer</option>
 <?php 
@@ -84,7 +86,10 @@ for ($i=$datein;$i<=$dateout;$i++) {
 	echo "								<option value=\"$i\"" . ($alerta[0]->anoDe == $i ? "selected" : "") . ">$i</option>" . PHP_EOL;
 }
 ?>
-							</select>&nbsp;-&nbsp; <select id="iAnoAte" name="iAnoAte"
+							</select>
+						</div>
+						<div class="span2">
+							<select id="iAnoAte" name="iAnoAte"
 								class="form-control  span2">									
 								<option value="0">Qualquer</option>
 <?php 
@@ -128,23 +133,25 @@ foreach ($modelos as $modelo) {
 			</div>
 			<div class="row">
 				<div class="span4">
-					<div class="form-group">
-						<div class="form-controls">
+					<div class="row">
+						<div class="span2">
 							<select id="iNumeroPortasDe" name="iNumeroPortasDe"
 								class="form-control span2">
-								<option value="0" <?php echo $alerta[0]->numeroPortaDe == 0 ? "selected" : "" ?>>Qualquer</option>
-								<option value="2" <?php echo $alerta[0]->numeroPortaDe == 1 ? "selected" : "" ?>>2 portas</option>
-								<option value="3" <?php echo $alerta[0]->numeroPortaDe == 2 ? "selected" : "" ?>>3 portas</option>
-								<option value="4" <?php echo $alerta[0]->numeroPortaDe == 3 ? "selected" : "" ?>>4 portas</option>
-								<option value="5" <?php echo $alerta[0]->numeroPortaDe == 4 ? "selected" : "" ?>>5 portas</option>
-							</select>&nbsp;-&nbsp; 
-						<select id="iNumeroPortasAte"
+								<option value="0" <?php echo $alerta[0]->numeroPortasDe == 0 ? "selected" : "" ?>>Qualquer</option>
+								<option value="2" <?php echo $alerta[0]->numeroPortasDe == 1 ? "selected" : "" ?>>2 portas</option>
+								<option value="3" <?php echo $alerta[0]->numeroPortasDe == 2 ? "selected" : "" ?>>3 portas</option>
+								<option value="4" <?php echo $alerta[0]->numeroPortasDe == 3 ? "selected" : "" ?>>4 portas</option>
+								<option value="5" <?php echo $alerta[0]->numeroPortasDe == 4 ? "selected" : "" ?>>5 portas</option>
+							</select>
+						</div>
+						<div class="span2">
+							<select id="iNumeroPortasAte"
 								name="iNumeroPortasAte" class="form-control span2">
-								<option value="0" <?php echo $alerta[0]->numeroPortaAte == 0 ? "selected" : "" ?>>Qualquer</option>
-								<option value="2" <?php echo $alerta[0]->numeroPortaAte == 1 ? "selected" : "" ?>>2 portas</option>
-								<option value="3" <?php echo $alerta[0]->numeroPortaAte == 2 ? "selected" : "" ?>>3 portas</option>
-								<option value="4" <?php echo $alerta[0]->numeroPortaAte == 3 ? "selected" : "" ?>>4 portas</option>
-								<option value="5" <?php echo $alerta[0]->numeroPortaAte == 4 ? "selected" : "" ?>>5 portas</option>
+								<option value="0" <?php echo $alerta[0]->numeroPortasAte == 0 ? "selected" : "" ?>>Qualquer</option>
+								<option value="2" <?php echo $alerta[0]->numeroPortasAte == 1 ? "selected" : "" ?>>2 portas</option>
+								<option value="3" <?php echo $alerta[0]->numeroPortasAte == 2 ? "selected" : "" ?>>3 portas</option>
+								<option value="4" <?php echo $alerta[0]->numeroPortasAte == 3 ? "selected" : "" ?>>4 portas</option>
+								<option value="5" <?php echo $alerta[0]->numeroPortasAte == 4 ? "selected" : "" ?>>5 portas</option>
 							</select>
 						</div>
 					</div>
@@ -168,8 +175,8 @@ foreach ($modelos as $modelo) {
 			</div>
 			<div class="row">
 				<div class="span4">
-					<div class="form-group">
-						<div class="form-controls">
+					<div class="row">
+						<div class="span2">
 							<select id="iQuilometragemDe" name="iQuilometragemDe"
 								class="form-control span2">
 								<option value="0" <?php echo $alerta[0]->quilometragemDe == 0 ? "selected" : "" ?>>Qualquer</option>
@@ -186,7 +193,9 @@ foreach ($modelos as $modelo) {
 								<option value="100000" <?php echo $alerta[0]->quilometragemDe == 100000 ? "selected" : "" ?>>100.000 km</option>
 								<option value="150000" <?php echo $alerta[0]->quilometragemDe == 150000 ? "selected" : "" ?>>150.000 km</option>
 								<option value="200000" <?php echo $alerta[0]->quilometragemDe == 200000 ? "selected" : "" ?>>200.000 km</option>
-							</select>&nbsp;-&nbsp; 
+							</select>
+						</div>
+						<div class="span2"> 
 							<select id="iQuilometragemAte"
 								name="iQuilometragemAte" class="form-control span2">
 								<option value="0" <?php echo $alerta[0]->quilometragemAte == 0 ? "selected" : "" ?>>Qualquer</option>

@@ -267,10 +267,12 @@ $(document).ready(function(){
 		$(location).attr('href',"<?php echo base_url();?>home");
 	});
 	$('#iMarca').html("<option value='0'>Carregando...</option>");
-	//$('#iMarca').load('<?php echo base_url();?>veiculos/marcacombo/'+$('#iMarca').val()' ));
+	marcaurl = '<?php echo base_url();?>veiculos/marcacombo/'+$('#iMarca').val();
+	$('#iMarca').load(marcaurl);
     $('#iMarca').change(function() {
 		$('#iModelo').html("<option value='0'>Carregando...</option>");
-        $('#iModelo').load('<?php echo base_url();?>veiculos/modelocombo/'+$('#iMarca').val()+'/<?php echo $alerta[0]->marca;?>' );
+		marcaurl = '<?php echo base_url();?>veiculos/modelocombo/'+$('#iMarca').val()+'/<?php echo $alerta[0]->marca;?>';
+        $('#iModelo').load(marcaurl);
     });
 });		
 </script>

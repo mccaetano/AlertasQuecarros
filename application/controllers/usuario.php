@@ -16,11 +16,47 @@ class Usuario extends CI_Controller {
 		$this->load->view('templates/footer', $data);
 	}
 	
-	public function adicionar() {
+	public function alteraemail() {
+		$session_data = $this->session->userdata('logged_in');
+		$email = $session_data['email'];
 		
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 		
+		$this->form_validation->set_rules('iNewEmail', 'Email', 'trim|required|xss_clean|valid_email|callback_checa_email_cadastrado');
+		
+		if($this->form_validation->run() == FALSE)	{
+			$data["title"] = "Alertas QueCarros";
+			$data["email"] = $email;
+			$this->load->view('templates/header', $data);
+			$this->load->view('login_altera_email_view', $data);
+			$this->load->view('templates/footer', $data);
+		} else 	{
+			$newemail =  $this->input->post('iNewEmail');
+			$this->load->model('eUsuario');
+			$this->eUsuario->alteraemail($email, $newemail);
+			
+			$this->session->sess_destroy();
+			redirect('home', 'refresh');
+		}
+	}
+	
+	function checa_email_cadastrado($email) {
+		$this->load->model('eUsuario');
+		$usuarioData = $this->eUsuario->buscaEmail($email);
+		if (!is_null($usuarioData)) {
+			$this->form_validation->set_message('checa_email_cadastrado', 'Email já cadastrado');
+			return FALSE;
+		}
+		return TRUE;
+	}
+	
+	
+	public function adicionar() {
+	
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
+
 		$this->form_validation->set_rules('iEmail', 'Email', 'trim|required|xss_clean|valid_email|callback_checa_email_cadastrado');
 		$this->form_validation->set_rules('iSenha', 'Senha', 'trim|required|xss_clean|max_length[10]|matches[iRepSenha]');
 		$this->form_validation->set_rules('iRepSenha', 'Repetir Senha', 'trim|required|xss_clean|max_length[10]');
@@ -35,15 +71,5 @@ class Usuario extends CI_Controller {
 			$this->eUsuario->adiciona($email, $senha, $news);
 			redirect("home", "refresh");
 		}
-	}
-	
-	function checa_email_cadastrado($email) {
-		$this->load->model('eUsuario');
-		$usuarioData = $this->eUsuario->buscaEmail($email);
-		if (!is_null($usuarioData)) {
-			$this->form_validation->set_message('checa_email_cadastrado', 'Email já cadastrado');
-			return FALSE;
-		}
-		return TRUE;
 	}
 }

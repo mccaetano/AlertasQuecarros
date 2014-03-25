@@ -51,4 +51,22 @@ class eUsuario extends CI_Model {
 		
 		
 	}
+	
+	function alteraemail($email, $newemail) {
+	
+		//$this->db->set('st_usuario', $email);
+		$this->db->set('st_email', $newemail);
+		$this->db->where('st_email', $email);
+		$retorno = $this->db->update('wrl_usuarios_querocarros');
+		
+		$this->db->set('st_email', $newemail);
+		$this->db->where('st_email', $email);
+		$this->db->update('wtb_receber_promocoes');
+		
+		$this->db->set('email', $newemail);
+		$this->db->where('email', $email);
+		$this->db->update('wtb_alertas_querocarros');
+	
+		return $retorno;
+	}
 }

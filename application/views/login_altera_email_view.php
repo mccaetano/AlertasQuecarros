@@ -10,10 +10,8 @@
 
 						<!-- Appended Input-->
 						<div class="control-group">
-							<div class="controls">									
-								<input id="iOldEmail" name="iOldEmail" class="input-xlarge"
-									placeholder="preencha aqui seu novo endereço de email" type="text"
-									disabled value='<?php echo $email; ?>' >
+							<label  class="control-label">Email</label>	
+							<div class="controls">								
 								<input id="iNewEmail" name="iNewEmail" class="input-xlarge"
 									placeholder="preencha aqui seu novo endereço de email" type="text"
 									required="" value='<?php set_value('iNewEmail') ?>' >
@@ -21,7 +19,7 @@
 						</div>
 						<div class="control-group">
 							<div class="controls">
-								<button type="submit" class="btn">Gravar</button>
+								<button type="submit" class="btn btn-primary">Gravar</button>
 							</div>
 						</div>
 					</fieldset>

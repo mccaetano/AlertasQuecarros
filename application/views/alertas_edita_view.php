@@ -2,6 +2,7 @@
 <div class="container well well-small">
 	<?php echo form_open("alertas/altera", array("class"=>"form-horizontal")) ?>
 		<fieldset>
+			<input type="hidden" name="iID" id="iID" value="<?php echo $alerta[0]->cod_identificacao ?>">
 			<div class="row">
 				<div class="span12">
 					<legend>Edição do Alerta</legend>
@@ -103,7 +104,6 @@ for ($i=$datein;$i<=$dateout;$i++) {
 				</div>
 				<div class="span4">
 					<select id="iModelo" name="iModelo" class="form-control">
-						<option value="0">Indiferente</option>
 <?php 
 /*
 foreach ($modelos as $modelo) {
@@ -251,7 +251,7 @@ foreach ($modelos as $modelo) {
 						<option value="1" <?php echo $alerta[0]->frequencia == 1 ? "selected" : "" ?>>Diário</option>
 						<option value="2" <?php echo $alerta[0]->frequencia == 2 ? "selected" : "" ?>>Semanal</option>
 					</select>
-					<a href="#">Cancelar Alerta</a>
+					<a href="<?php echo base_url();?>alertas/cancela/<?php echo $alerta[0]->cod_identificacao ?>">Cancelar Alerta</a>
 				</div>
 				<div class="span4">
 					<button type="submit" class="btn btn-primary">Gravar</button>
@@ -267,12 +267,15 @@ $(document).ready(function(){
 		$(location).attr('href',"<?php echo base_url();?>home");
 	});
 	$('#iMarca').html("<option value='0'>Carregando...</option>");
-	marcaurl = '<?php echo base_url();?>veiculos/marcacombo/'+$('#iMarca').val();
-	$('#iMarca').load(marcaurl);
+	surl = '<?php echo base_url();?>veiculos/marcacombo/<?php echo $alerta[0]->marca;?>';
+	$('#iMarca').load(surl);
+	$('#iModelo').html("<option value='0'>Carregando...</option>");
+	surl = '<?php echo base_url();?>veiculos/modelocombo/<?php echo $alerta[0]->marca;?>/<?php echo $alerta[0]->modelo;?>';
+	$('#iModelo').load(surl);
     $('#iMarca').change(function() {
 		$('#iModelo').html("<option value='0'>Carregando...</option>");
-		marcaurl = '<?php echo base_url();?>veiculos/modelocombo/'+$('#iMarca').val()+'/<?php echo $alerta[0]->marca;?>';
-        $('#iModelo').load(marcaurl);
+		surl = '<?php echo base_url();?>veiculos/modelocombo/'+$('#iMarca').val()+'/0';
+        $('#iModelo').load(surl);
     });
 });		
 </script>

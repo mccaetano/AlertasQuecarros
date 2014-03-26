@@ -68,8 +68,8 @@ class Alertas extends CI_Controller {
 			'quilometragemAte'=>0,
 			'marca'=>0,
 			'modelo'=>0,
-			'cidade'=>0,
-			'estado'=>0,
+			'cidade'=>'',
+			'estado'=>'',
 			'fotos'=>0,
 			'tipocombustivel'=>0,
 			'transmissao'=>0,
@@ -98,7 +98,7 @@ class Alertas extends CI_Controller {
 	
 	
 		$this->load->model('eAlertas');
-	
+		$cod_identificacao = $this->input->post('iID');
 		$alerta = array(
 				'titulo'=>$this->input->post('iTitulo'),
 				'precoDe'=>$this->input->post('iPrecoDe'),
@@ -121,12 +121,25 @@ class Alertas extends CI_Controller {
 				'precoReduzido'=>($this->input->post('iPrecoReduzido') == "on" ? 0 : 1),
 				'email'=>$email
 		);
-		$return = $this->eAlertas->adiciona($alerta);
-		if (!$return) {
-			redirect(base_url() ."alertas/novo");
-		} else {
-			$this->db->cache_delete('home', 'index');
-			redirect('home', 'refresh');
+		$return = $this->eAlertas->altera($cod_identificacao, $alerta);
+		$this->db->cache_delete('home', 'index');
+		$this->db->cache_delete('alertas', 'edita');
+		redirect('home', 'refresh');
+	}
+	
+	public function cancela($cod_identificacao) {
+		if(!$this->session->userdata('logged_in')) {
+			//If no session, redirect to login page
+			redirect('login', 'refresh');
 		}
+		$session_data = $this->session->userdata('logged_in');
+		$email = $session_data['email'];
+	
+	
+		$this->load->model('eAlertas');
+		$return = $this->eAlertas->exclui($cod_identificacao);
+		$this->db->cache_delete('home', 'index');
+		$this->db->cache_delete('alertas', 'edita');
+		redirect('home', 'refresh');
 	}
 }

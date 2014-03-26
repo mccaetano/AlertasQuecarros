@@ -98,5 +98,23 @@ class Login extends CI_Controller {
 		$this->load->view('templates/footer', $data);
 	}
 	
+	function alterasenha() {
+		if(!$this->session->userdata('logged_in')) {
+			$data["title"] = "Alertas QueCarros";
+			$this->load->view('templates/header', $data);
+			$this->load->view('login_view');
+			$this->load->view('templates/footer', $data);
+			return;
+		}
+		$session_data = $this->session->userdata('logged_in');
+		$email = $session_data['email'];
+	
+		$data["title"] = "Alertas QueCarros";
+		$data["email"] = $email;
+		$this->load->view('templates/header', $data);
+		$this->load->view('login_altera_senha_view', $data);
+		$this->load->view('templates/footer', $data);
+	}
+	
 	
 }

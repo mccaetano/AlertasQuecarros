@@ -41,6 +41,32 @@ class Usuario extends CI_Controller {
 		}
 	}
 	
+	public function alterasenha() {
+		$session_data = $this->session->userdata('logged_in');
+		$email = $session_data['email'];
+	
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
+	
+		$this->form_validation->set_rules('iSenha', 'Senha', 'trim|required|xss_clean|max_length[10]|matches[iSenhaRep]');
+		$this->form_validation->set_rules('iSenhaRep', 'Repetir Senha', 'trim|required|xss_clean|max_length[10]');
+		
+		if($this->form_validation->run() == FALSE)	{
+			$data["title"] = "Alertas QueCarros";
+			$data["email"] = $email;
+			$this->load->view('templates/header', $data);
+			$this->load->view('login_altera_senha_view', $data);
+			$this->load->view('templates/footer', $data);
+		} else 	{
+			$senha =  $this->input->post('iSenha');
+			$this->load->model('eUsuario');
+			$this->eUsuario->alterasenha($email, $senha);
+				
+			$this->session->sess_destroy();
+			redirect('home', 'refresh');
+		}
+	}
+	
 	function checa_email_cadastrado($email) {
 		$this->load->model('eUsuario');
 		$usuarioData = $this->eUsuario->buscaEmail($email);

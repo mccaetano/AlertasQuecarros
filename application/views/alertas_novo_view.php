@@ -1,6 +1,17 @@
 <div class="container">
 	<div class="row">
 		<div class="span12">
+<?php
+$formValidator = validation_errors();
+if ($formValidator != '') {
+	echo "			<div class=\"alert\">" . PHP_EOL;
+	echo "		  		<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>" . PHP_EOL;
+	echo "					$formValidator" .PHP_EOL; 
+	echo  "		  	</div>". PHP_EOL;
+}
+?>
+		</div>	
+		<div class="span12">
 			<div class="well well-small">
 			<?php echo form_open("alertas/adiciona", array("class"=>"form-horizontal")) . PHP_EOL ?>
 					<fieldset>

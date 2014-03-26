@@ -8,13 +8,11 @@ class eVeiculo extends CI_Model {
 	
 	function BuscaMarcas() {
 		
-		log_message('debug', "busca Marca inicou:");
 		$this->db->select("cd_marca, st_marca");
 		$this->db->order_by("st_marca", "asc");
 		$query  = $this->db->get("wtb_marcas");
 				
 		$result = $query->result();
-		log_message('debug', "busca Marca terminou:");
 		if(count($result) > 0){
 			return $result;
 		} else {
@@ -22,11 +20,9 @@ class eVeiculo extends CI_Model {
 		}
 	}
 	
-	function BuscaModelos($marca = FALSE) {
+	function BuscaModelos($marca = 0) {
 		$this->db->select("cd_modelo, st_modelo");
-		if ($marca) {			
-			$this->db->where("cd_marca", $marca);
-		}	
+		$this->db->where("cd_marca", $marca);
 		$this->db->order_by("st_modelo", "asc");		
 		$query  = $this->db->get("wtb_modelos");
 		

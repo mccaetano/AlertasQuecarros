@@ -69,4 +69,13 @@ class eUsuario extends CI_Model {
 	
 		return $retorno;
 	}
+	
+	function alterasenha($email, $senha) {
+	
+		$this->db->set('st_senha', $senha);
+		$this->db->where('st_email', $email);
+		$retorno = $this->db->update('wrl_usuarios_querocarros');
+	
+		return $retorno;
+	}
 }

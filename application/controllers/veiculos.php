@@ -15,7 +15,7 @@ class Veiculos extends CI_Controller {
 	}
 	
 	public function modelocombo($cd_marca = 0, $selectedvalue = 0) {
-		
+		log_message('debug', 'Marca: ' . $cd_marca);
 		$this->load->model('eVeiculo');		
 		$data["modelos"] = $this->eVeiculo->BuscaModelos($cd_marca);	
 		$data["selectedvalue"] = $selectedvalue;	

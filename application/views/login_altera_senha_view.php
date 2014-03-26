@@ -13,19 +13,27 @@ if ($formValidator != '') {
 ?>
 		</div>	
 		<div class="span12">
-			<?php echo form_open("usuario/alteraemail", array("class"=>"form-horizontal")) . PHP_EOL ?>
+			<?php echo form_open("usuario/alterasenha", array("class"=>"form-horizontal")) . PHP_EOL ?>
 					<fieldset>
 
 						<!-- Form Name -->
-						<legend>Altera o email do usuário logado</legend>
+						<legend>Altera a senha do usuário logado</legend>
 
 						<!-- Appended Input-->
 						<div class="control-group">
-							<label  class="control-label">Email</label>	
+							<label  class="control-label">Senha</label>	
 							<div class="controls">								
-								<input id="iNewEmail" name="iNewEmail" class="input-xlarge"
-									placeholder="preencha aqui seu novo endereço de email" type="text"
-									required="" value='<?php set_value('iNewEmail') ?>' >
+								<input id="iSenha" name="iSenha" class="input-xlarge"
+									placeholder="preencha aqui sua nova senha" type="password"
+									required="" value='<?php set_value('iSenha') ?>' >
+							</div>
+						</div>
+						<div class="control-group">
+							<label  class="control-label">Repetir Senha</label>	
+							<div class="controls">								
+								<input id="iSenhaRep" name="iSenhaRep" class="input-xlarge"
+									placeholder="repita aqui sua nova senha" type="password"
+									required="" value='<?php set_value('iSenhaRep') ?>' >
 							</div>
 						</div>
 						<div class="control-group">

@@ -13,16 +13,17 @@ class eAlertas extends CI_Model {
 		
 	}
 	
-	function altera($alerta) {
-	
-		$this->db->update('wtb_alertas_querocarros', $alerta);
-	
+	function altera($cod_identificacao, $alerta) {
+		$this->db->set('dataalteracao', date("Y-m-d H:i:s", time()));
+		$this->db->where('cod_identificacao', $cod_identificacao);
+		$return = $this->db->update('wtb_alertas_querocarros', $alerta);
+		return $return;
 	}
 	
-	function exclui($alerta) {	
-			
-		$this->db->delete('wtb_alertas_querocarros', $alerta);
-	
+	function exclui($cod_identificacao) {
+		$this->db->where('cod_identificacao', $cod_identificacao);
+		$return = $this->db->delete('wtb_alertas_querocarros');
+		return $return;
 	}
 
 	function buscaAlerta($cod_identificacao = 0) {

@@ -70,6 +70,7 @@ HTML;
 HTML;
 	echo "										<li><a href=\"" . base_url() . "login/logout\"><i class=\"icon-off\"></i> Sair</a></li>";
 	echo "										<li><a href=\"" . base_url() . "login/alteraemail\"><i class=\"icon-edit\"></i> Alterar Email</a></li>";
+	echo "										<li><a href=\"" . base_url() . "login/alterasenha\"><i class=\"icon-edit\"></i> Alterar Senha</a></li>";
 	echo <<<HTML
 										  </ul>
 									</div>

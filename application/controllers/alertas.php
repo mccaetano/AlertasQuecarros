@@ -57,7 +57,7 @@ class Alertas extends CI_Controller {
 		$this->load->model('eAlertas');
 		
 		$alerta = array(
-			'titulo'=>$this->input->post["inewalert"],
+			'titulo'=>$this->input->post("inewalert"),
 			'precoDe'=>0,
 			'precoAte'=>0,
 			'anoDe'=>0,

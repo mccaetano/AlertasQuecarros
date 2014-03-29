@@ -6,7 +6,8 @@ class eAlertas extends CI_Model {
 	}
 
 	function adiciona($alerta) {
-			
+		$this->db->set('titulo', $alerta->titulo);
+		$this->db->set('email', $alerta->email);
 		$return = $this->db->insert('wtb_alertas_querocarros', $alerta);
 		
 		return $return;

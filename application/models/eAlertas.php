@@ -6,9 +6,9 @@ class eAlertas extends CI_Model {
 	}
 
 	function adiciona($alerta) {
-		$this->db->set('titulo', $alerta->titulo);
-		$this->db->set('email', $alerta->email);
-		$return = $this->db->insert('wtb_alertas_querocarros', $alerta);
+		$this->db->set('titulo', $alerta['titulo']);
+		$this->db->set('email', $alerta['email']);
+		$return = $this->db->insert('wtb_alertas_querocarros');
 		
 		return $return;
 		
@@ -53,5 +53,19 @@ class eAlertas extends CI_Model {
 		}
 
 
+	}
+	
+	function listaAlertasMotor() {
+	
+		$query  = $this->db->query("call busca_alertas_querocarros()");
+	
+		$result = $query->result();
+		if(count($result) > 0){
+			return $result;
+		} else {
+			return FALSE;
+		}
+	
+	
 	}
 }

@@ -13,6 +13,9 @@ class Motor extends CI_Controller {
 		
 		if ($alertas) {
 			foreach ($alertas as $alerta) {
+				$alerta->dataultimapesuisa = date("Y-m-d H:i:s", time());
+				$this->eAlertas->altera($alerta->cod_identificacao, $alerta);
+				
 				$url = base_url() . 'anuncios/sendmail/' . $alerta->cod_identificacao;
 				$this->curl_post_async($url, $alerta);	
 			}

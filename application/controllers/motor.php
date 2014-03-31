@@ -8,13 +8,12 @@ class Motor extends CI_Controller {
 	
 	public function cron() {
 		
-		$this->load->module('eAlertas');
+		$this->load->model('eAlertas');
 		$alertas = $this->eAlertas->listaAlertasMotor();
 		
 		if ($alertas) {
-			foreach ($alertas as $alerta) {
-				$alerta->dataultimapesuisa = date("Y-m-d H:i:s", time());
-				$this->eAlertas->altera($alerta->cod_identificacao, $alerta);
+			foreach ($alertas as $alerta) {				
+				$this->eAlertas->altera($alerta->cod_identificacao, array("dataultimapesquisa"=>date("Y-m-d H:i:s", time())));
 				
 				$url = base_url() . 'anuncios/sendmail/' . $alerta->cod_identificacao;
 				$this->curl_post_async($url, $alerta);	
@@ -37,7 +36,7 @@ class Motor extends CI_Controller {
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post_string);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_USERAGENT, ‘curl’);
+		curl_setopt($ch, CURLOPT_USERAGENT, 'codeigineter');
 		curl_setopt($ch, CURLOPT_TIMEOUT, 1);
 		$result = curl_exec($ch);
 		curl_close($ch);

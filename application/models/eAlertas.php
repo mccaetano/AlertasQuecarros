@@ -57,7 +57,7 @@ class eAlertas extends CI_Model {
 	
 	function listaAlertasMotor() {
 	
-		$query  = $this->db->query("call busca_alertas_querocarros()");
+		$query  = $this->db->query("busca_alertas_querocarros");
 	
 		$result = $query->result();
 		if(count($result) > 0){

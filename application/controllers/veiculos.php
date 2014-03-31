@@ -21,4 +21,13 @@ class Veiculos extends CI_Controller {
 		$data["selectedvalue"] = $selectedvalue;	
 		$this->load->view('veiculo_modelo_view', $data);
 	}
+	
+	public function cambiocombo($selectedvalue = 0) {
+	
+		$this->load->model('eVeiculo');
+		$data["cambios"] = $this->eVeiculo->BuscaCambios();
+		$data["selectedvalue"] = $selectedvalue;
+		$this->load->view('veiculo_cambios_view', $data);
+	
+	}
 }

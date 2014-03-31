@@ -33,4 +33,19 @@ class eVeiculo extends CI_Model {
 			return FALSE;
 		}
 	}
+	
+	function BuscaCambios() {
+	
+		$this->db->select("cd_cambio, st_cambio");
+		$this->db->order_by("st_cambio", "asc");
+		$query  = $this->db->get("wtb_cambios");
+	
+		$result = $query->result();
+		if(count($result) > 0){
+			return $result;
+		} else {
+			return FALSE;
+		}
+	}
+	
 }

@@ -6,7 +6,7 @@ class eAnuncios extends CI_Model {
 	}
 	
 	public function BuscaAnuncios($id) {
-		$query  = $this->db->query("call wtb_alertas_querocarros_anuncios($id)");
+		$query  = $this->db->query("wtb_alertas_querocarros_anuncios($id)");
 
 		$result = $query->result();
 		if(count($result) > 0){

@@ -6,9 +6,19 @@ class eAlertas extends CI_Model {
 	}
 
 	function adiciona($alerta) {
+		$this->db->trans_begin();
+		$mail = $alerta['email'];
 		$this->db->set('titulo', $alerta['titulo']);
-		$this->db->set('email', $alerta['email']);
+		$this->db->set('email', $mail);
 		$return = $this->db->insert('wtb_alertas_querocarros');
+		if ($return) {
+			$return = $this->db->query("select max(cod_identificacao) as insert_id from wtb_alertas_querocarros where email = '$mail'")->result();			
+			$this->db->trans_commit();
+		}
+		else {
+			$this->db->trans_rollback();
+			$return = FALSE;
+		}
 		
 		return $return;
 		

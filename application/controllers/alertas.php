@@ -79,11 +79,14 @@ class Alertas extends CI_Controller {
 			'email'=>$email
 		);
 		$return = $this->eAlertas->adiciona($alerta);
+		
 		if (!$return) {
 			redirect(base_url() ."alertas/novo");
 		} else {
 			$this->db->cache_delete('home', 'index');
-			redirect('home', 'refresh');
+			$this->db->cache_delete('alertas', 'edita');
+			$insertID = $return[0]->insert_id;
+			redirect("alertas/edita/$insertID", 'refresh');
 		}
 	}
 	

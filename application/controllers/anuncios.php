@@ -11,11 +11,11 @@ class Anuncios extends CI_Controller {
 			
 		$this->load->model('eAnuncios');
 		
-		log_message('debug', 'Passou aqui:' . PHP_EOL . $id);
-		$data['anuncios'] = $this->eAnuncios->BuscaAnuncios($id);
+		$anuncios = $this->eAnuncios->BuscaAnuncios($id);
+		$data['anuncios'] = $anuncios;
 		
 		$HTML = $this->load->view('anuncio_html_view', $data, true);
-		send_email($email, 'Anuncios Querocarros', $HTML);
+		send_email($anuncios[0]->email, 'Anuncios Querocarros', $HTML);
 		
 	}
 }

@@ -25,7 +25,7 @@ if ($formValidator != '') {
 								<div class="input-append">									
 									<input id="inewalert" name="inewalert" class="input-xlarge"
 										placeholder="preencha aqui o titulo do seu alerta" type="text"
-										required="" value='<?php set_value('inewalert') ?>' > 
+										required="required" value='<?php set_value('inewalert') ?>' > 
 									<button type="submit" class="btn">Enviar</button>
 								</div>
 

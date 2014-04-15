@@ -8,14 +8,20 @@ class Anuncios extends CI_Controller {
 	}
 	
 	public function sendmail($id) {
-			
+		ini_set('memory_limit', '-1');
+		ini_set('max_input_time', '3600');
+		
 		$this->load->model('eAnuncios');
-		
+		$this->load->model('eAlertas');
+		$alerta = $this->eAlertas->buscaAlerta($id);
 		$anuncios = $this->eAnuncios->BuscaAnuncios($id);
-		$data['anuncios'] = $anuncios;
 		
-		$HTML = $this->load->view('anuncio_html_view', $data, true);
-		send_email($anuncios[0]->email, 'Anuncios Querocarros', $HTML);
-		
+		if ($anuncios) {
+			$data['anuncios'] = $anuncios;
+			$data['alerta'] = $alerta;
+			
+			$HTML = $this->load->view('anuncio_html_view', $data, true);
+			send_email($anuncios[0]->email, 'Anuncios Querocarros', $HTML);
+		}
 	}
 }

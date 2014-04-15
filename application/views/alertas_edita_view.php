@@ -116,13 +116,18 @@ foreach ($modelos as $modelo) {
 				<div class="span4">
 					<select id="iTipoCombustivel" name="iTipoCombustivel"
 						class="form-control">
-						<option value="0" <?php echo $alerta[0]->tipocombustivel == 0 ? "selected" : "" ?>>Indiferente</option>
-						<option value="1" <?php echo $alerta[0]->tipocombustivel == 1 ? "selected" : "" ?>>Gasolina</option>
-						<option value="2" <?php echo $alerta[0]->tipocombustivel == 2 ? "selected" : "" ?>>Flex</option>
+						<option value="0" <?php echo $alerta[0]->tipocombustivel == 0 ? "selected" : "" ?>>Indiferente</option>			
+						<option value="1" <?php echo $alerta[0]->tipocombustivel == 1 ? "selected" : "" ?>>Álcool</option>
+						<option value="2" <?php echo $alerta[0]->tipocombustivel == 2 ? "selected" : "" ?>>Álcool e  Gás Natural</option>
 						<option value="3" <?php echo $alerta[0]->tipocombustivel == 3 ? "selected" : "" ?>>Diesel</option>
-						<option value="4" <?php echo $alerta[0]->tipocombustivel == 4 ? "selected" : "" ?>>Álcool</option>
-						<option value="5" <?php echo $alerta[0]->tipocombustivel == 5 ? "selected" : "" ?>>GNV</option>
-						<option value="6" <?php echo $alerta[0]->tipocombustivel == 6 ? "selected" : "" ?>>Elétrico</option>
+						<option value="4" <?php echo $alerta[0]->tipocombustivel == 4 ? "selected" : "" ?>>Flex</option>
+						<option value="5" <?php echo $alerta[0]->tipocombustivel == 5 ? "selected" : "" ?>>Flex e Gás Natural</option>
+						<option value="6" <?php echo $alerta[0]->tipocombustivel == 6 ? "selected" : "" ?>>Gás Natural</option>
+						<option value="7" <?php echo $alerta[0]->tipocombustivel == 7 ? "selected" : "" ?>>Gasolina</option>
+						<option value="8" <?php echo $alerta[0]->tipocombustivel == 8 ? "selected" : "" ?>>Gasolina e Gás Natural</option>
+						<option value="9" <?php echo $alerta[0]->tipocombustivel == 9 ? "selected" : "" ?>>Gasolina e elétrico</option>
+						<option value="10" <?php echo $alerta[0]->tipocombustivel == 10 ? "selected" : "" ?>>Flex, gás natural e benzina</option>
+						<option value="11" <?php echo $alerta[0]->tipocombustivel == 11 ? "selected" : "" ?>>Elétrico</option>
 					</select>
 				</div>
 			</div>
@@ -163,8 +168,11 @@ foreach ($modelos as $modelo) {
 				<div class="span4">
 					<select id="iTransmissao" name="iTransmissao" class="form-control">
 						<option value="0" <?php echo $alerta[0]->transmissao == 0 ? "selected" : "" ?>>Indiferente</option>
-						<option value="1" <?php echo $alerta[0]->transmissao == 1 ? "selected" : "" ?>>Manual</option>
-						<option value="2" <?php echo $alerta[0]->transmissao == 2 ? "selected" : "" ?>>Automático</option>
+						<option value="1" <?php echo $alerta[0]->transmissao == 1 ? "selected" : "" ?>>Automática</option>
+						<option value="2" <?php echo $alerta[0]->transmissao == 2 ? "selected" : "" ?>>Automática Sequencial</option>
+						<option value="3" <?php echo $alerta[0]->transmissao == 3 ? "selected" : "" ?>>CVT</option>
+						<option value="4" <?php echo $alerta[0]->transmissao == 4 ? "selected" : "" ?>>Manual</option>
+						<option value="5" <?php echo $alerta[0]->transmissao == 5 ? "selected" : "" ?>>Semi-automática</option>
 					</select>
 				</div>
 			</div>
@@ -261,7 +269,7 @@ foreach ($modelos as $modelo) {
 		</fieldset>
 	</form>
 </div>
-<script type="text/javascript" language="javascript">
+<script type="text/javascript" lang="javascript">
 $(document).ready(function(){
 	$('#bVoltar').click(function() {
 		$(location).attr('href',"<?php echo base_url();?>home");

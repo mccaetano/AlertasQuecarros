@@ -1,4 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');?>
+<?php setlocale (LC_ALL, 'pt_BR'); ?>
 <html lang="pt">
 <head>
 	<title></title>

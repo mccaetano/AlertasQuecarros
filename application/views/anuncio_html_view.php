@@ -6,41 +6,41 @@
 </head>
 <body>
 <div style="width: 640px">
-	<div style="background: #CCCCCC">
+	<div style="background: #9ACD32;">
 		<table style="width: 100%">
 		<tr>
 		<td>
-			<img alt="" src="<?php echo base_url(); ?>assets/img/querocarros.com.png"/>
+			<img alt="" src="<?php echo base_url(); ?>assets/img/querocarros.com_148.png" style="width: 308px; height: 122px"/>
 		</td>
 		<td style="text-align: right;">
-			olá&nbsp;<?php echo $alerta[0]->email?>
+			<span style="font-weight: bold; font-size: 1.3em;color: white; ">olá&nbsp;<?php echo $alerta[0]->email?></span>
 		</td>
 		</tr>
 		</table>
 	</div>
-	<div style="border: 2px solid #CCCCCC" >
+	<div style="background: #CCCCCC;border: 2px solid #CCCCCC" >
 		<table style="width: 100%">
 		<tr>
 			<td>
-				Perfil de alerta:&nbsp;<?php echo $alerta[0]->titulo?>
+				Perfil de alerta:&nbsp;<span style="font-weight: bold; font-size: 1em "><?php echo $alerta[0]->titulo?></span>
 			</td>
 			<td style="text-align: right;">
-				Período:&nbsp;<?php echo $alerta[0]->frequencia == 1 ? "Diária" : "Semanal"; ?>
+				Período:&nbsp;<span style="font-weight: bold; font-size: 1em "><?php echo $alerta[0]->frequencia == 1 ? "Diária" : "Semanal"; ?></span>
 			</td>
 		</tr>
 		<tr>
 			<td>			
-				Total de anuncios encontrados para seu perfil: <?php echo count($anuncios) ?>
+				Total de anuncios encontrados para seu perfil:&nbsp;<span style="font-weight: bold; font-size: 1em "><?php echo count($anuncios) ?></span>
 			</td>
 		</tr>
 		</table>
 	</div>
 <?php foreach ($anuncios as $anuncio) {?>
-	<div style="border: 2px solid #CCCCCC; height: 90px">
-		<div style="width: 85px; height: 85px; float: left"><img alt="imagem" src="<?php echo $anuncio->imagem?>" width="80px" height="80px"></div>
+	<div style="border: 2px solid #CCCCCC; background: #EEE9E9; height: 90px">
+		<div style="width: 85px; height: 85px; float: left"><img alt="imagem não encontrada" src="<?php echo $anuncio->imagem?>" width="80px" height="80px"></div>
 		<div>
 			<a href="http://www.querocarros.com/detalhes.asp?codigo=ID-<?php echo str_pad($anuncio->cd_carro, 9, "0", STR_PAD_LEFT) ?>&Origem=Alertas" 
-				style="font-weight: bold; color: red; text-decoration: none; font-size: 1em"><?php echo $anuncio->DescricaoMarca . ' ' . 
+				style="font-weight: bold; color: red; text-decoration: none; font-size: 1.1em"><?php echo $anuncio->DescricaoMarca . ' ' . 
 				$anuncio->DescricaoModelo . ' ' . $anuncio->motor  . ' ' . 
 				$anuncio->corCarro  . ' - R$ ' .  number_format($anuncio->preco_revenda, 2, ",", ".")?></a><br/>
 			<table style="font-size: 0.8em">

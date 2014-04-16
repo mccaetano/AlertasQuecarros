@@ -21,15 +21,17 @@ class Anuncios extends CI_Controller {
 			$data['anuncios'] = $anuncios;
 			$data['alerta'] = $alerta;
 			
-			$HTML =  $this->load->view('anuncio_html_view', $data, true);
+			$HTML =  $this->load->view('anuncio_html_view', $data, TRUE);
 			
-			$this->email->from("marcelo.cheruti@gmail.com");
+			$this->email->initialize();
+			//$this->email->from("marcelo.cheruti@gmail.com");
 			$this->email->to($alerta[0]->email);
 			$this->email->subject('Anuncios Querocarros');
-			$this->email->set_mailtype("html");
+			//$this->email->set_mailtype("html");
 			$this->email->message($HTML);
 			$this->email->send();
 			
 		}
+		//die();
 	}
 }

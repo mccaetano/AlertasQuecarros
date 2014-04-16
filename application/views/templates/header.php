@@ -1,3 +1,4 @@
+<?php setlocale (LC_ALL, 'pt_BR'); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

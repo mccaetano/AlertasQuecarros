@@ -7,5 +7,5 @@ $config['smtp_user'] = 'marcelo.cheruti@gmail.com';
 $config['smtp_pass'] = 'Mccnmdsc03';
 $config['smtp_port'] = 465;
 $config['smtp_timeout'] = 7;
-$config['mailtype'] = 'HTML';
+$config['mailtype'] = 'html';
 $config['newline']    = "\r\n";

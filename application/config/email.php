@@ -1,11 +1,11 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$config['from'] = 'marcelo.cheruti@gmail.com';
+
 $config['protocol'] = 'smtp';
-$config['smtp_host'] = 'ssl://smtp.googlemail.com';
-$config['smtp_user'] = 'marcelo.cheruti@gmail.com';
-$config['smtp_pass'] = 'Mccnmdsc03';
-$config['smtp_port'] = 465;
-$config['smtp_timeout'] = 7;
+$config['smtp_host'] = 'ssl://in.mailjet.com';
+$config['smtp_port'] = '465';
+$config['smtp_user'] = '4e659de00dcaedb219937f21e29b21be';
+$config['smtp_pass'] = 'a693abc7419d1cf1b04da44020934f1d';
+$config['charset'] = 'utf-8';
 $config['mailtype'] = 'html';
-$config['newline']    = "\r\n";
+$config['newline'] = "\r\n";

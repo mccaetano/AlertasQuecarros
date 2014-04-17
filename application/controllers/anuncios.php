@@ -31,7 +31,9 @@ class Anuncios extends CI_Controller {
 			$this->email->subject('Alertas querocarros.com');
 			$this->email->message($HTML);
 			
-			$this->email->send();				
+			if (!$this->email->send()) {
+				echo $this->email->print_debugger();				
+			}
 			
 		}
 		//die();

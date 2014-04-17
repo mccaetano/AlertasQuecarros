@@ -11,7 +11,7 @@
 		<table style="width: 100%">
 		<tr>
 		<td>
-			<img alt="" src="<?php echo base_url(); ?>assets/img/querocarros.com_148.png" style="width: 308px; height: 122px"/>
+			<img alt="" src="http://alertas.querocarros.com/assets/img/querocarros.com_148.png" style="width: 308px; height: 122px"/>
 		</td>
 		<td style="text-align: right;">
 			<span style="font-weight: bold; font-size: 1.3em;color: white; ">olá&nbsp;<?php echo $alerta[0]->email?></span>

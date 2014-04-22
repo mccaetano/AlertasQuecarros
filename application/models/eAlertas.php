@@ -51,8 +51,8 @@ class eAlertas extends CI_Model {
 	}
 	
 	function buscaAlertaPorId($cod_identificacao = 0) {
-		$this->db->where('cod_identificacao', $cod_identificacao);
-		$query  = $this->db->get('busca_alertas_porid_querocarros ?');
+		$this->db->set('@cod_identificacao', $cod_identificacao);
+		$query  = $this->db->query("busca_alertasid_querocarros $cod_identificacao");
 	
 		$result = $query->result();
 		if(count($result) > 0){

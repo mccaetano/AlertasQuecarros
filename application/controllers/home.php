@@ -25,4 +25,25 @@ class Home extends CI_Controller {
 		$this->load->view('templates/footer', $data);
 	
 	}
+	
+	public function internal($id = '')
+	{
+		if ($id == '') {
+			redirect('login', 'refresh');
+		}
+				
+		$this->load->model('eUsuario');
+		$usuario = $this->eUsuario->buscaUsuario($id);
+		if (!$usuario) {
+			redirect('login', 'refresh');
+		}
+		
+		$email = $usuario[0]->st_email;
+		$sess_array = array(
+				'email' => $email
+		);
+		$this->session->set_userdata('logged_in', $sess_array);
+		redirect('home', 'refresh');
+		
+	}
 }

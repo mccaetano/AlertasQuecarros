@@ -22,6 +22,19 @@ class eUsuario extends CI_Model {
 		return $retorno;
 	}
 	
+	
+	function buscaUsuario($cd_usuario = '') {
+		$this->db->from('wrl_usuarios_querocarros');
+		$this->db->where('cd_usuario', $cd_usuario);
+		$query  = $this->db->get();
+	
+		$result = $query->result();
+		if(count($result) > 0) {
+			return $result;
+		}
+	
+	}
+	
 	function buscaEmail($email = '') {
 		$this->db->from('wrl_usuarios_querocarros');
 		$this->db->where('st_email', $email);

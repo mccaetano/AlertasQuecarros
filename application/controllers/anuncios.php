@@ -21,9 +21,8 @@ class Anuncios extends CI_Controller {
 			$data['anuncios'] = $anuncios;
 			$data['alerta'] = $alerta;
 			
-			$HTML =  $this->load->view('anuncio_html_view', $data, FALSE);
-			/*
-			
+			$HTML =  $this->load->view('anuncio_html_view', $data, TRUE);
+						
 			$this->load->library('email');
 			
 			$this->email->from('contato@querocarros.com', 'querocarros.com');
@@ -33,10 +32,9 @@ class Anuncios extends CI_Controller {
 			
 			if (!$this->email->send()) {
 				echo $this->email->print_debugger();				
-			}
-			*/
+			}		
 			
 		}
-		//die();
+		die();
 	}
 }

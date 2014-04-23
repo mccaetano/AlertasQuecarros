@@ -28,7 +28,15 @@
 		</tr>
 		<tr>
 			<td>
-				Perfil de alerta:&nbsp;<span style="font-weight: bold; font-size: 1em "><?php echo $alerta[0]->titulo?>, Marca: <?php echo $alerta[0]->st_marca?>, Modelo: <?php echo $alerta[0]->st_modelo?></span>
+				Perfil de alerta:&nbsp;<span style="font-weight: bold; font-size: 1em "><?php echo $alerta[0]->titulo?>, 
+				Marca: <?php echo $alerta[0]->st_marca?>, Modelo: <?php echo $alerta[0]->st_modelo?>, Cambio: <?php echo $alerta[0]->st_cambio?>
+				, Combustivel: <?php echo $alerta[0]->st_combustivel?>, Ano: <?php echo $alerta[0]->anoDe?>-<?php echo $alerta[0]->anoAte?>
+				, Preço: <?php echo $alerta[0]->precoDe?>-<?php echo $alerta[0]->precoAte?>
+				, KMs: <?php echo $alerta[0]->quilometragemDe?>-<?php echo $alerta[0]->quilometragemAte?>
+				, Portas: <?php echo $alerta[0]->numeroPortasDe?>-<?php echo $alerta[0]->numeroPortasAte?>
+				, Cidade: <?php echo $alerta[0]->cidade?>
+				, Estado: <?php echo $alerta[0]->estado?>
+				, Fotos: <?php echo $alerta[0]->fotos == 1 ? "Indiferente" : "Somente com fotos"?></span>
 			</td>
 			<td style="text-align: right;">
 				Período:&nbsp;<span style="font-weight: bold; font-size: 1em "><?php echo $alerta[0]->frequencia == 1 ? "Diária" : "Semanal"; ?></span>

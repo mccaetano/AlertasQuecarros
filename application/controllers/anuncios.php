@@ -31,10 +31,10 @@ class Anuncios extends CI_Controller {
 			$this->email->message($HTML);
 			
 			if (!$this->email->send()) {
-				echo $this->email->print_debugger();	
-				die();			
-			}		
-			echo "envou email para " . $alerta[0]->email;				
+				echo $this->email->print_debugger();
+			} else {		
+				echo "envou email para " . $alerta[0]->email;
+			}				
 		}
 		die();
 	}

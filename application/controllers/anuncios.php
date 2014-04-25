@@ -35,7 +35,9 @@ class Anuncios extends CI_Controller {
 			} else {		
 				echo "envou email para " . $alerta[0]->email;
 			}				
+		} else {
+			echo "Não encontrou anuncio para email " . $alerta[0]->email;
 		}
-		die();
+		//die();
 	}
 }

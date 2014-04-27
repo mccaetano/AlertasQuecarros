@@ -14,29 +14,36 @@ class Anuncios extends CI_Controller {
 		
 		$this->load->model('eAnuncios');
 		$this->load->model('eAlertas');
+		$this->load->model('eUsuario');
 		$alerta = $this->eAlertas->buscaAlertaPorId($id);
 		$anuncios = $this->eAnuncios->BuscaAnuncios($id);
+		
+		$email = $alerta[0]->email;
+		$usuario = $this->eUsuario->buscaEmail($email);
+		
 		
 		if ($anuncios) {
 			$data['anuncios'] = $anuncios;
 			$data['alerta'] = $alerta;
+			$data['usuario'] = $usuario;
 			
 			$HTML =  $this->load->view('anuncio_html_view', $data, TRUE);
 						
 			$this->load->library('email');
 			
 			$this->email->from('contato@querocarros.com', 'querocarros.com');
-			$this->email->to($alerta[0]->email);
+			$this->email->to($email);
 			$this->email->subject('Alertas querocarros.com');
 			$this->email->message($HTML);
-			
+			/*
 			if (!$this->email->send()) {
 				echo $this->email->print_debugger();
 			} else {		
-				echo "envou email para " . $alerta[0]->email;
-			}				
+				echo "envou email para " . $email;
+			}*/	
+			echo $HTML;			
 		} else {
-			echo "Não encontrou anuncio para email " . $alerta[0]->email;
+			echo "Não encontrou anuncio para email " . $email;
 		}
 		//die();
 	}

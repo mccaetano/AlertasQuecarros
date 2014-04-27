@@ -26,9 +26,9 @@ class Home extends CI_Controller {
 	
 	}
 	
-	public function internal($id = '')
+	public function internal($id = 0, $idalerta = 0)
 	{
-		if ($id == '') {
+		if ($id == 0) {
 			redirect('login', 'refresh');
 		}
 				
@@ -43,7 +43,12 @@ class Home extends CI_Controller {
 				'email' => $email
 		);
 		$this->session->set_userdata('logged_in', $sess_array);
-		redirect('home', 'refresh');
+		
+		if ($idalerta > 0) {
+			redirect('alertas/edita/' . $idalerta , 'refresh');
+		} else {		
+			redirect('home', 'refresh');
+		}
 		
 	}
 }

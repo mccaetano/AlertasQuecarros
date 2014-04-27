@@ -95,7 +95,14 @@ class Usuario extends CI_Controller {
 			$news = $this->input->post('iNews') == "on" ? TRUE : FALSE;
 			$this->load->model('eUsuario');
 			$this->eUsuario->adiciona($email, $senha, $news);
-			redirect("home", "refresh");
+			
+			$sess_array = array(
+					'email' => $email
+			);
+			$this->session->set_userdata('logged_in', $sess_array);
+			
+			
+			redirect("home", "refresh");			
 		}
 	}
 }

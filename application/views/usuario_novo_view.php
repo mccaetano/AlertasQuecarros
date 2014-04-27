@@ -46,7 +46,7 @@ if ($formValidator != '') {
 						<label class="control-label" for="iSenha">Senha</label>
 						<div class="controls">
 							<input id="iSenha" name="iSenha" type="password"
-								placeholder="Preencha sua senha com mánimo 6 dígitos"
+								placeholder="Preencha sua senha com máximo 6 dígitos"
 								class="input-xlarge" required="">
 						</div>
 					</div>
@@ -56,7 +56,7 @@ if ($formValidator != '') {
 						<label class="control-label" for="iRepSenha">Repita a Senha:</label>
 						<div class="controls">
 							<input id="iRepSenha" name="iRepSenha" type="password"
-								placeholder="Preencha sua senha com mánimo 6 dígitos"
+								placeholder="Preencha sua senha com máximo 6 dígitos"
 								class="input-xlarge" required="">
 						</div>
 					</div>

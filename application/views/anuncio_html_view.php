@@ -79,7 +79,7 @@
 							<td style="width: 60%;">
 								<p>Modelo: <?php echo $anuncio->DescricaoMarca  . " " . $anuncio->DescricaoModelo . " - Cor:" . $anuncio->corCarro . " - Ano: " . $anuncio->AnoModelo . " - Transmissão: " . $anuncio->cambio ?></p>
 								<p style="font-size: x-small; color: #CCCCCC;"><?php echo $anuncio->Observacoes; ?></p>
-								<p style="font-size: xx-small; color: #708300;"><a style="color: #00a5a7;" alt="" href="mailto://<?php echo $anuncio->emailVendedor?>"><?php echo $anuncio->NomeVendedor;?></a></p>
+								<p style="font-size: xx-small; color: #708300;"><a style="color: #708357;" alt="" href="mailto://<?php echo $anuncio->emailVendedor?>"><?php echo $anuncio->NomeVendedor;?></a></p>
 							</td>
 						</tr>
 					</table>

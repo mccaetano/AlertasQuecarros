@@ -100,11 +100,14 @@
 				<tr>
 					<td>
 						<table width="100%" style="color: #00a5a7; font-size: medium;">
-							<tr>										
-								<td width="60%"><a style="color: #00a5a7;" href="http://www.querocarros.com/detalhes.asp?codigo=ID-<?php echo str_pad($anuncio->cd_carro, 9, "0", STR_PAD_LEFT) ?>&Origem=Alertas" 
-									><?php echo $anuncio->DescricaoMarca . ' ' . 
+							<tr>	
+																	
+								<td width="60%">
+									<a style="color: #00a5a7;" href="http://www.querocarros.com/detalhes.asp?codigo=ID-<?php echo str_pad($anuncio->cd_carro, 9, "0", STR_PAD_LEFT) ?>&Origem=Alertas">
+									<?php echo $anuncio->DescricaoMarca . ' ' . 
 									$anuncio->DescricaoModelo . ' ' . $anuncio->motor  . ' ' . 
-									$anuncio->corCarro?></a></td>
+									$anuncio->corCarro?></a>
+								</td>
 								<td width="40%" align="right">R$ <?php echo number_format($anuncio->preco_revenda, 2, ",", "."); ?></td>
 							</tr>
 						</table>
@@ -124,11 +127,18 @@
 					<td>
 						<table  width="100%">
 							<tr>
-								<td width="20%" style="font-size: small;"><img alt="imagem não encontrada" src="<?php echo $anuncio->imagem;?>" width="80" height="80"></td>
+								<td width="20%" style="font-size: small;">
+									<a style="color: #00a5a7;" href="http://www.querocarros.com/detalhes.asp?codigo=ID-<?php echo str_pad($anuncio->cd_carro, 9, "0", STR_PAD_LEFT) ?>&Origem=Alertas">
+									<img alt="imagem não encontrada" src="<?php echo $anuncio->imagem;?>" width="80" height="80">
+									</a>
+								</td>
 								<td width="80%">
 									<table  width="100%">
 										<tr>
-											<td>Modelo: <?php echo $anuncio->DescricaoMarca  . " " . $anuncio->DescricaoModelo . " - Cor:" . $anuncio->corCarro . " - Ano: " . $anuncio->AnoModelo . " - Transmissão: " . $anuncio->cambio ?>
+											<td>
+												<a style="color: black; text-decoration: none;" href="http://www.querocarros.com/detalhes.asp?codigo=ID-<?php echo str_pad($anuncio->cd_carro, 9, "0", STR_PAD_LEFT) ?>&Origem=Alertas">
+												Modelo: <?php echo $anuncio->DescricaoMarca  . " " . $anuncio->DescricaoModelo . " - Cor:" . $anuncio->corCarro . " - Ano: " . $anuncio->AnoModelo . " - Transmissão: " . $anuncio->cambio ?>
+												</a>
 											</td>
 										</tr>
 										<tr>
@@ -136,7 +146,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td style="font-size: xx-small; color: #708357;"><a style="font-size: xx-small; color: #708357;" alt="" href="mailto://<?php echo $anuncio->emailVendedor; ?>"><?php echo mb_convert_encoding($anuncio->NomeVendedor, 'UTF-8'); ?></a>
+											<td style="font-size: xx-small; color: #708357;"><?php echo mb_convert_encoding($anuncio->NomeVendedor, 'UTF-8'); ?>
 											</td>
 										</tr>
 									</table>
@@ -145,7 +155,7 @@
 						</table>
 					</td>
 				</tr>	
-			</table>		
+			</table>	
 		</td>
 	</tr>
 <?php }	?>

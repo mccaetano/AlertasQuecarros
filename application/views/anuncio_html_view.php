@@ -149,7 +149,7 @@
 											<td style="font-size: xx-small; color: #708357;">
 												<?php echo mb_convert_encoding($anuncio->NomeVendedor, 'UTF-8'); ?>
 												&nbsp;<a style="color: #00a5a7;" href="http://www.querocarros.com/detalhes.asp?codigo=ID-<?php echo str_pad($anuncio->cd_carro, 9, "0", STR_PAD_LEFT) ?>&Origem=Alertas">
-												Editar este anúncio</a>
+												Ver este anúncio</a>
 											</td>
 										</tr>
 									</table>

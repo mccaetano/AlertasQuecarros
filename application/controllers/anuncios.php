@@ -33,7 +33,7 @@ class Anuncios extends CI_Controller {
 			
 			$this->email->from('contato@querocarros.com', 'querocarros.com');
 			$this->email->to($email);
-			$this->email->subject('Alertas querocarros.com');
+			$this->email->subject('Seu alerta ' . $alerta[0]->titulo . ' ' . $alerta[0]->frequencia = 1 ? "Diário" : "Semanal" . ' de veículos QueroCarros.com');
 			$this->email->message($HTML);
 			
 			if (!$this->email->send()) {

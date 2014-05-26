@@ -25,7 +25,7 @@ if ($formValidator != '') {
 							<div class="controls">								
 								<input id="iNewEmail" name="iNewEmail" class="input-xlarge"
 									placeholder="preencha aqui seu novo endereço de email" type="text"
-									required="" value='<?php set_value('iNewEmail') ?>' >
+									required value='<?php set_value('iNewEmail') ?>' >
 							</div>
 						</div>
 						<div class="control-group">
@@ -34,7 +34,7 @@ if ($formValidator != '') {
 							</div>
 						</div>
 					</fieldset>
-				</form>
+				<?php echo form_close() ?>
 			</div>
 		</div>
 	</div>

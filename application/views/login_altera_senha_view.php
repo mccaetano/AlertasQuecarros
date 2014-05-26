@@ -25,7 +25,7 @@ if ($formValidator != '') {
 							<div class="controls">								
 								<input id="iSenha" name="iSenha" class="input-xlarge"
 									placeholder="preencha aqui sua nova senha" type="password"
-									required="" value='<?php set_value('iSenha') ?>' >
+									required value='<?php set_value('iSenha') ?>' >
 							</div>
 						</div>
 						<div class="control-group">
@@ -33,7 +33,7 @@ if ($formValidator != '') {
 							<div class="controls">								
 								<input id="iSenhaRep" name="iSenhaRep" class="input-xlarge"
 									placeholder="repita aqui sua nova senha" type="password"
-									required="" value='<?php set_value('iSenhaRep') ?>' >
+									required value='<?php set_value('iSenhaRep') ?>' >
 							</div>
 						</div>
 						<div class="control-group">

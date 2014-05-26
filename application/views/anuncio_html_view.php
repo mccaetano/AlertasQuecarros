@@ -99,23 +99,23 @@
 			<table width="100%" cellpadding="5" cellspacing="5"  style="border: 1 solid #CCCCCC;">
 				<tr>
 					<td>
-						<table width="100%" style="color: #00a5a7; font-size: medium;">
+						<table width="100%" style="color: #000000;">
 							<tr>	
 																	
-								<td width="60%">
-									<a style="color: #00a5a7;" href="http://www.querocarros.com/detalhes.asp?codigo=ID-<?php echo str_pad($anuncio->cd_carro, 9, "0", STR_PAD_LEFT) ?>&Origem=Alertas">
+								<td width="60%" style="font-size: medium;">
+									<a style="color: #000000; font-size: medium;" href="http://www.querocarros.com/detalhes.asp?codigo=ID-<?php echo str_pad($anuncio->cd_carro, 9, "0", STR_PAD_LEFT) ?>&Origem=Alertas">
 									<?php echo $anuncio->DescricaoMarca . ' ' . 
 									$anuncio->DescricaoModelo . ' ' . $anuncio->motor  . ' ' . 
 									$anuncio->corCarro?></a>
 								</td>
-								<td width="40%" align="right">R$ <?php echo number_format($anuncio->preco_revenda, 2, ",", "."); ?></td>
+								<td width="40%" align="right" style="font-size: medium;">R$ <?php echo number_format($anuncio->preco_revenda, 2, ",", "."); ?></td>
 							</tr>
 						</table>
 					</td>				
 				</tr>
 				<tr>
 					<td>
-						<table  width="100%" style="color: #CCCCCC; font-size: x-small;">
+						<table  width="100%" style="color: #BFBFBF; font-size: x-small;">
 							<tr>
 								<td width="60%"><?php echo mb_convert_encoding($anuncio->CidadeVendedor . ' ' . $anuncio->EstadoVendedor, "UTF-8"); ?></td>
 								<td width="40%"></td>
@@ -142,7 +142,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td style="font-size: x-small; color: #CCCCCC;"><?php echo mb_convert_encoding($anuncio->Observacoes, "UTF-8"); ?>
+											<td style="font-size: x-small; color: #8C8C8C;"><?php echo mb_convert_encoding($anuncio->Observacoes, "UTF-8"); ?>
 											</td>
 										</tr>
 										<tr>
@@ -161,11 +161,11 @@
 			</table>	
 		</td>
 	</tr>
-<?php }	?>
 	<tr align="left">
-		<td>
+		<td style="height: 6px;">
 		</td>
 	</tr>
+<?php }	?>
 	<tr align="left">
 		<td>
 		</td>

@@ -163,6 +163,7 @@
 	</tr>
 	<tr align="left">
 		<td style="height: 6px;">
+			<hr>
 		</td>
 	</tr>
 <?php }	?>

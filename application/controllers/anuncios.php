@@ -10,6 +10,8 @@ class Anuncios extends CI_Controller {
 	public function sendmail($id) {
 		ini_set('memory_limit', '-1');
 		ini_set('max_input_time', '3600');
+		setlocale (LC_ALL, 'pt_BR');
+		ini_set('mssql.charset', 'utf-8');
 	
 		
 		$this->load->model('eAnuncios');
@@ -46,6 +48,6 @@ class Anuncios extends CI_Controller {
 		} else {
 			echo "Não encontrou anuncio para email " . $email;
 		}
-		//die();
+		//die(); 
 	}
 }

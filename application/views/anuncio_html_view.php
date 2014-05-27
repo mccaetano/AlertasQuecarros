@@ -117,7 +117,7 @@
 					<td>
 						<table  width="100%" style="color: #BFBFBF; font-size: x-small;">
 							<tr>
-								<td width="60%"><?php echo mb_convert_encoding($anuncio->CidadeVendedor . ' ' . $anuncio->EstadoVendedor, "UTF-8"); ?></td>
+								<td width="60%"><?php echo mb_convert_encoding($anuncio->CidadeVendedor . ' ' . $anuncio->EstadoVendedor, "utf-8", "ISO-8859-1"); ?></td>
 								<td width="40%"></td>
 							</tr>
 						</table>
@@ -142,7 +142,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td style="font-size: x-small; color: #8C8C8C;"><?php echo mb_convert_encoding($anuncio->Observacoes, "UTF-8"); ?>
+											<td style="font-size: x-small; color: #8C8C8C;"><?php echo mb_convert_encoding($anuncio->Observacoes, "utf-8", "ISO-8859-1"); ?>
 											</td>
 										</tr>
 										<tr>

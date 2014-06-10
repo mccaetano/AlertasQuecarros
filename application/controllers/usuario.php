@@ -7,6 +7,10 @@ class Usuario extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 	}
 	
+	public function barra() {	
+		$this->load->view('usuario_novo_barra');
+	}
+	
 	public function novo() {
 		
 		

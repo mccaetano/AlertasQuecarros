@@ -37,7 +37,7 @@ if ($formValidator != '') {
 						<div class="controls">
 							<input id="iEmail" name="iEmail" type="text"
 								placeholder="Preencha seu email aqui" class="input-xlarge"
-								required="" value='<?php echo set_value('iEmail'); ?>'>
+								required value='<?php echo set_value('iEmail'); ?>'>
 						</div>
 					</div>
 
@@ -47,7 +47,7 @@ if ($formValidator != '') {
 						<div class="controls">
 							<input id="iSenha" name="iSenha" type="password"
 								placeholder="Preencha sua senha com máximo 6 dígitos"
-								class="input-xlarge" required="">
+								class="input-xlarge" required>
 						</div>
 					</div>
 
@@ -57,7 +57,7 @@ if ($formValidator != '') {
 						<div class="controls">
 							<input id="iRepSenha" name="iRepSenha" type="password"
 								placeholder="Preencha sua senha com máximo 6 dígitos"
-								class="input-xlarge" required="">
+								class="input-xlarge" required>
 						</div>
 					</div>
 					

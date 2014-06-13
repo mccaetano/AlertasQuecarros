@@ -12,11 +12,12 @@ class Usuario extends CI_Controller {
 	}
 	
 	public function novo() {
-		
-		
+		$email =  $this->input->post('iEmail');
+				
 		$data["title"] = "Alertas QueCarros";
+		$data["email"] = $email;
 		$this->load->view('templates/header', $data);
-		$this->load->view('usuario_novo_view');
+		$this->load->view('usuario_novo_view', $data);
 		$this->load->view('templates/footer', $data);
 	}
 	

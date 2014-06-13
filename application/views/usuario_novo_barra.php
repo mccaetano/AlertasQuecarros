@@ -2,7 +2,7 @@
 <?php 
 	setlocale (LC_ALL, 'pt_BR'); 
 	ini_set('mssql.charset', 'utf-8');
-	//header('Content-type: text/plain');
+	header("Access-Control-Allow-Origin: *");
 ?>
 <div id="boxAlerta" style="background-color: #4D4D4D;padding: 20px 20px 20px 20px; margin: 0px 0px 0px 0px;position: absolute;	bottom: 0; width: 96%; " align="center">
 	<form id="boxFormAlerta" action="<?php echo base_url();?>usuario/novo" method="post">

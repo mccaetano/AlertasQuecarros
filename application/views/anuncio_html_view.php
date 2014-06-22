@@ -175,7 +175,7 @@
 	</tr>
 <?php }	?>
 	<tr align="left">
-		<td>Para descadastrar-se deste e-mail,<a href="<?php base_url();?>usuario/cacnelarEmail/<?php echo urlencode($usuario[0]->st_email);?>">acesse aqui</a>.
+		<td>Para descadastrar-se deste e-mail,<a href="<?php echo base_url();?>usuario/cacnelarEmail/<?php echo urlencode($usuario[0]->st_email);?>">acesse aqui</a>.
 		</td>
 	</tr>
 </table>

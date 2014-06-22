@@ -159,4 +159,48 @@ class Usuario extends CI_Controller {
 			$this->load->view('templates/footer', $data);
 		}
 	}
+	
+	function cacnelarEmail($email = FALSE) {
+		
+		if ($email === FALSE) {
+			$data["title"] = "Alertas QueCarros";
+			$data["email"] = $email;
+			$data["mensagem"] = 'Email não cadastrado no QueroCarros.com';
+			$this->load->view('templates/header', $data);
+			$this->load->view('alertas_cancelar', $data);
+			$this->load->view('templates/footer', $data);
+			return FALSE;
+		}
+		
+		$email =  $this->input->post('iEmail');
+		
+		$this->load->model('eUsuario');
+		
+		$usuario = $this->eUsuario->buscaEmail($email);
+		
+		if ($usuario) {
+			$this->load->model('eAlertas');
+			$alertas = $this->eAlertas->listaAlertas($email);
+			foreach ($alertas as $alerta) {
+				$this->eAlertas->exclui($alerta->cod_identificacao);
+			}
+			$this->eUsuario->excluir($usuario->cd_usuario);
+			
+			$data["title"] = "Alertas QueCarros";
+			$data["email"] = $email;
+			$data["mensagem"] = "Email $email cancelado com sucesso no QueroCarros.com";
+			$this->load->view('templates/header', $data);
+			$this->load->view('alertas_cancelar', $data);
+			$this->load->view('templates/footer', $data);
+			return FALSE;
+		} else {
+			$data["title"] = "Alertas QueCarros";
+			$data["email"] = $email;
+			$data["mensagem"] = 'Email não cadastrado no QueroCarros.com';
+			$this->load->view('templates/header', $data);
+			$this->load->view('alertas_cancelar', $data);
+			$this->load->view('templates/footer', $data);
+			return FALSE;
+		}
+	}
 }

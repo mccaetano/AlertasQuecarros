@@ -110,4 +110,53 @@ class Usuario extends CI_Controller {
 			redirect("home", "refresh");			
 		}
 	}
+	
+	public function recupera() {
+		
+		$data["title"] = "Alertas QueCarros";
+		$data["email"] = FALSE;
+		$data["mensagem"] = FALSE;
+		$this->load->view('templates/header', $data);
+		$this->load->view('usuario_envia_senha.php', $data);
+		$this->load->view('templates/footer', $data);
+	}
+	
+	public function enviaemail() {
+		$email =  $this->input->post('iEmail');
+
+		$this->load->model('eUsuario');
+		
+		$usuario = $this->eUsuario->buscaEmail($email);
+		
+		if ($usuario) {
+			$data['usuario'] = $usuario[0];
+			
+			$HTML =  $this->load->view('usuario_email_recupera', $data, TRUE);
+			
+			$this->load->library('email');
+				
+			$this->email->from('contato@querocarros.com', 'querocarros.com');
+			$this->email->to($email);
+			$this->email->subject('Recuperar senha do alerta QueroCarros.com');
+			$this->email->message($HTML);
+				
+			if (!$this->email->send()) {
+				$data["mensagem"] = $this->email->print_debugger();
+			} else {
+				$data["mensagem"] = 'Email enviado com sucesso, confira sua caixa postal e entre novamnte no Querocarros.com';
+			}
+			$data["title"] = "Alertas QueCarros";
+			$data["email"] = $email;			
+			$this->load->view('templates/header', $data);
+			$this->load->view('usuario_envia_senha.php', $data);
+			$this->load->view('templates/footer', $data);
+		} else 	{
+			$data["title"] = "Alertas QueCarros";
+			$data["email"] = $email;
+			$data["mensagem"] = 'Email não cadastrado no QueroCarros.com';
+			$this->load->view('templates/header', $data);
+			$this->load->view('usuario_envia_senha.php', $data);
+			$this->load->view('templates/footer', $data);
+		}
+	}
 }

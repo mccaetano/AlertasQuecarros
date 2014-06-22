@@ -143,6 +143,12 @@ class Alertas extends CI_Controller {
 		$return = $this->eAlertas->exclui($cod_identificacao);
 		$this->db->cache_delete('home', 'index');
 		$this->db->cache_delete('alertas', 'edita');
-		redirect('home', 'refresh');
+		
+		
+		$data["title"] = "Alertas QueCarros";
+		$data["email"] = $email;		
+		$this->load->view('templates/header', $data);
+		$this->load->view('alertas_cancelar', $data);
+		$this->load->view('templates/footer', $data);
 	}
 }

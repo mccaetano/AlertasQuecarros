@@ -128,8 +128,15 @@
 						<table  width="100%">
 							<tr>
 								<td width="20%" style="font-size: small;">
+									<?php 
+										$imagem = $anuncio->imagem;
+										if (strpos($imagem, "http") === FALSE) { $imagem = "http://www.querocarros.com/imagens/sem_foto_grande.jpg"; }
+										$headers = @get_headers($imagem);
+										if(strpos($headers[0],'200')===false) { $imagem = "http://www.querocarros.com/imagens/sem_foto_grande.jpg"; }
+									?>
 									<a style="color: #00a5a7;" href="http://www.querocarros.com/detalhes.asp?codigo=ID-<?php echo str_pad($anuncio->cd_carro, 9, "0", STR_PAD_LEFT) ?>&Origem=Alertas">
-									<img alt="imagem não encontrada" src="<?php echo $anuncio->imagem;?>" width="80" height="80">
+									<img alt="<?php echo $anuncio->DescricaoMarca . ' ' . $anuncio->DescricaoModelo . ' ' . $anuncio->motor  . ' ' . 
+									$anuncio->corCarro?>" src="<?php echo $imagem;?>" width="120" height="120">
 									</a>
 								</td>
 								<td width="80%">
@@ -168,7 +175,7 @@
 	</tr>
 <?php }	?>
 	<tr align="left">
-		<td>
+		<td>Para descadastrar-se deste e-mail,<a href="<?php base_url();?>alertas/cancela/<?php echo $alerta[0]->cod_identificacao;?>">acesse aqui</a>.
 		</td>
 	</tr>
 </table>

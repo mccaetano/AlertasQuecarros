@@ -98,7 +98,15 @@ class Login extends CI_Controller {
 		$this->load->view('templates/footer', $data);
 	}
 	
-	function alterasenha() {
+	function alterasenha($email = FALSE) {
+		if ($email) {
+			$sess_array = array(
+					'email' => urldecode($email)
+			);
+			$this->session->set_userdata('logged_in', $sess_array);
+		}
+		
+		
 		if(!$this->session->userdata('logged_in')) {
 			$data["title"] = "Alertas QueCarros";
 			$this->load->view('templates/header', $data);

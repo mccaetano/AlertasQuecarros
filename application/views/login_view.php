@@ -28,12 +28,13 @@ if ($formValidator != '') {
 							<input type="password" id="iloginSenha"  name="iloginSenha"
 							placeholder="Senha">
 						</div>
-					</div>
+					</div>					
 					<div class="control-group">
 						<div class="controls">
 							<label class="checkbox"> <input type="checkbox" checked="checked">Lembrar-me
 							</label>
-							<button class="btn btn-small btn-primary" type="submit">Entrar</button>
+							<button class="btn btn-small btn-primary" type="submit">Entrar</button>							
+							<a href="<?php echo base_url() ?>usuario/recupera" >esqueci minha senha</a>
 						</div>
 					</div>
 				</fieldset>

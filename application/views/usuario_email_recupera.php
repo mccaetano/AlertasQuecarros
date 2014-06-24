@@ -90,7 +90,7 @@
 	</tr>
 	<tr align="left">
 		<td>
-			<p>Acesse o Alertas do QueroCarros.com e troque sua senha. <a href="<?php echo base_url() ?>login/alterasenha/<?php echo urlencode($usuario->st_email) ?>">CLIQUE AQUI</a>.</p>			 
+			<p>Acesse o Alertas do QueroCarros.com e troque sua senha. <a href="<?php echo base_url() ?>login/alterasenha/<?php echo $usuario->cd_usuario; ?>">CLIQUE AQUI</a>.</p>			 
 		</td>
 	</tr>
 	<tr align="left">

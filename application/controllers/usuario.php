@@ -49,6 +49,7 @@ class Usuario extends CI_Controller {
 	public function alterasenha() {
 		$session_data = $this->session->userdata('logged_in');
 		$email = $session_data['email'];
+		$cd_usuario = $session_data['cd_usuario'];
 	
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
@@ -59,6 +60,7 @@ class Usuario extends CI_Controller {
 		if($this->form_validation->run() == FALSE)	{
 			$data["title"] = "Alertas QueCarros";
 			$data["email"] = $email;
+			$data["cd_usuario"] = $cd_usuario;
 			$this->load->view('templates/header', $data);
 			$this->load->view('login_altera_senha_view', $data);
 			$this->load->view('templates/footer', $data);
@@ -101,8 +103,12 @@ class Usuario extends CI_Controller {
 			$this->load->model('eUsuario');
 			$this->eUsuario->adiciona($email, $senha, $news);
 			
+			$this->load->model('eUsuario');
+			$usuarioData = $this->eUsuario->buscaEmail($email);
+			
 			$sess_array = array(
-					'email' => $email
+					'email' => $email,
+					'cd_usuario' => $usuarioData[0]->cd_usuario
 			);
 			$this->session->set_userdata('logged_in', $sess_array);
 			
@@ -160,11 +166,24 @@ class Usuario extends CI_Controller {
 		}
 	}
 	
-	function cacnelarEmail($email = FALSE) {
+	function cacnelaremail($cd_usuario = FALSE) {
 		
-		if ($email === FALSE) {
+		if ($cd_usuario === FALSE) {
 			$data["title"] = "Alertas QueCarros";
-			$data["email"] = $email;
+			$data["email"] = "";
+			$data["mensagem"] = 'Email não informado no QueroCarros.com';
+			$this->load->view('templates/header', $data);
+			$this->load->view('alertas_cancelar', $data);
+			$this->load->view('templates/footer', $data);
+			return FALSE;
+		}
+		
+		$this->load->model('eUsuario');
+		$usuario = $this->eUsuario->buscaUsuario($cd_usuario);
+		
+		if ($usuario === FALSE) {
+			$data["title"] = "Alertas QueCarros";
+			$data["email"] = "";
 			$data["mensagem"] = 'Email não cadastrado no QueroCarros.com';
 			$this->load->view('templates/header', $data);
 			$this->load->view('alertas_cancelar', $data);
@@ -172,11 +191,8 @@ class Usuario extends CI_Controller {
 			return FALSE;
 		}
 		
-		$email =  urldecode($email);
+		$email =  $usuario[0]->st_email;
 		
-		$this->load->model('eUsuario');
-		
-		$usuario = $this->eUsuario->buscaEmail($email);
 		
 		if ($usuario) {
 			$this->load->model('eAlertas');
@@ -185,7 +201,7 @@ class Usuario extends CI_Controller {
 				$cod_identificacao = $alerta->cod_identificacao;
 				$this->eAlertas->exclui($cod_identificacao);
 			}
-			$cd_usuario= $usuario->cd_usuario;
+			$cd_usuario= $usuario[0]->cd_usuario;
 			$this->eUsuario->excluir($cd_usuario);
 			
 			$data["title"] = "Alertas QueCarros";

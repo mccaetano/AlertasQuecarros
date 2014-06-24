@@ -14,9 +14,11 @@ class Home extends CI_Controller {
 		}
 		$session_data = $this->session->userdata('logged_in');
 		$email = $session_data['email'];
+		$cd_usuario = $session_data['cd_usuario'];
 			
 		$this->load->model('eAlertas');
 		$data['email'] = $email;
+		$data['cd_usuario'] = $cd_usuario;
 		$data["alertasLista"] = $this->eAlertas->listaAlertas($email);
 		$data["title"] = "Alertas QueCarros";
 		
@@ -40,7 +42,8 @@ class Home extends CI_Controller {
 		
 		$email = $usuario[0]->st_email;
 		$sess_array = array(
-				'email' => $email
+				'email' => $email,
+				'cd_usuario' => $id
 		);
 		$this->session->set_userdata('logged_in', $sess_array);
 		

@@ -8,6 +8,15 @@ class Anuncios extends CI_Controller {
 	}
 	
 	public function sendmail($id) {
+		if ($id === FALSE) {
+			echo "Não encontrou anuncio para email " . $email;
+			die();
+		}
+		
+		if ($id == 0) {
+			echo "Não encontrou anuncio para email " . $email;
+			die();
+		}
 		ini_set('memory_limit', '-1');
 		ini_set('max_input_time', '3600');
 		setlocale (LC_ALL, 'pt_BR');

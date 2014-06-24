@@ -14,8 +14,10 @@ class Alertas extends CI_Controller {
 		}
 		$session_data = $this->session->userdata('logged_in');
 		$email = $session_data['email'];
+		$cd_usuario = $session_data['cd_usuario'];
 		
-		$data["email"] = $email;
+		$data["email"] = $email;		
+		$data['cd_usuario'] = $cd_usuario;
 		$data["title"] = "Alertas QueCarros";
 		$this->load->view('templates/header', $data);
 		$this->load->view('alertas_novo_view');
@@ -29,6 +31,7 @@ class Alertas extends CI_Controller {
 		}
 		$session_data = $this->session->userdata('logged_in');
 		$email = $session_data['email'];
+		$cd_usuario = $session_data['cd_usuario'];
 		
 				
 		$this->load->model('eVeiculo');
@@ -36,6 +39,7 @@ class Alertas extends CI_Controller {
 		$data["title"] = "Alertas QueCarros";
 		//$data["marcas"] = $this->eVeiculo->BuscaMarcas();
 		$data["email"] = $email;
+		$data['cd_usuario'] = $cd_usuario;
 		$data["alerta"] = $this->eAlertas->buscaAlerta($id);
 		
 		$this->load->view('templates/header', $data);
@@ -51,6 +55,7 @@ class Alertas extends CI_Controller {
 		}
 		$session_data = $this->session->userdata('logged_in');
 		$email = $session_data['email'];
+		$cd_usuario = $session_data['cd_usuario'];
 		
 		
 		
@@ -97,6 +102,7 @@ class Alertas extends CI_Controller {
 		}
 		$session_data = $this->session->userdata('logged_in');
 		$email = $session_data['email'];
+		$cd_usuario = $session_data['cd_usuario'];
 	
 	
 	
@@ -137,6 +143,7 @@ class Alertas extends CI_Controller {
 		}
 		$session_data = $this->session->userdata('logged_in');
 		$email = $session_data['email'];
+		$cd_usuario = $session_data['cd_usuario'];
 	
 	
 		$this->load->model('eAlertas');

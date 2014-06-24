@@ -50,7 +50,7 @@ class eUsuario extends CI_Model {
 	function validaUsuario($email = '',  $senha = '') {
 		//$senha = base64_encode($senha);
 		
-		$this->db->select('st_email, st_senha');
+		$this->db->select('st_email, st_senha, cd_usuario');
 		$this->db->from('wrl_usuarios_querocarros');
 		$this->db->where('st_email', $email);
 		$this->db->where('st_senha', $senha);

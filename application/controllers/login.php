@@ -18,6 +18,7 @@ class Login extends CI_Controller {
 		}
 		$session_data = $this->session->userdata('logged_in');
 		$email = $session_data['email'];
+		$cd_usuario = $session_data['cd_usuario'];
 
 		redirect('home', 'refresh');
 		/*
@@ -60,7 +61,8 @@ class Login extends CI_Controller {
 			foreach($result as $row)
 				{
 					$sess_array = array(
-							'email' => $row->st_email
+							'email' => $row->st_email,
+							'cd_usuario' => $row->cd_usuario
 					);
 					$this->session->set_userdata('logged_in', $sess_array);
 				}
@@ -90,18 +92,23 @@ class Login extends CI_Controller {
 		}
 		$session_data = $this->session->userdata('logged_in');
 		$email = $session_data['email'];
+		$cd_usuario = $session_data['cd_usuario'];
 
 		$data["title"] = "Alertas QueCarros";
 		$data["email"] = $email;
+		$data['cd_usuario'] = $cd_usuario;
 		$this->load->view('templates/header', $data);
 		$this->load->view('login_altera_email_view', $data);
 		$this->load->view('templates/footer', $data);
 	}
 	
-	function alterasenha($email = FALSE) {
-		if ($email) {
+	function alterasenha($cd_usuario = FALSE) {
+		if ($cd_usuario) {
+			$this->load->model('eUsuario');
+			$usuario = $this->eUsuario->buscaUsuario($cd_usuario);
 			$sess_array = array(
-					'email' => urldecode($email)
+					'email' => $usuario[0]->st_mail,
+					'cd_usuario' => $usuario[0]->cd_usuario
 			);
 			$this->session->set_userdata('logged_in', $sess_array);
 		}
@@ -116,9 +123,11 @@ class Login extends CI_Controller {
 		}
 		$session_data = $this->session->userdata('logged_in');
 		$email = $session_data['email'];
+		$cd_usuario = $session_data['cd_usuario'];
 	
 		$data["title"] = "Alertas QueCarros";
 		$data["email"] = $email;
+		$data['cd_usuario'] = $cd_usuario;
 		$this->load->view('templates/header', $data);
 		$this->load->view('login_altera_senha_view', $data);
 		$this->load->view('templates/footer', $data);

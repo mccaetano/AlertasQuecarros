@@ -97,7 +97,9 @@ class eUsuario extends CI_Model {
 	function excluir($cd_usuario = '') {
 		
 		$this->db->where('cd_usuario', $cd_usuario);
-		$this->db->delete('wrl_usuarios_querocarros');
+		$retorno = $this->db->delete('wrl_usuarios_querocarros');
+	
+		return $retorno;
 	
 	}
 }

@@ -172,7 +172,7 @@ class Usuario extends CI_Controller {
 			return FALSE;
 		}
 		
-		$email =  $this->input->post('iEmail');
+		$email =  urldecode($email);
 		
 		$this->load->model('eUsuario');
 		
@@ -182,9 +182,11 @@ class Usuario extends CI_Controller {
 			$this->load->model('eAlertas');
 			$alertas = $this->eAlertas->listaAlertas($email);
 			foreach ($alertas as $alerta) {
-				$this->eAlertas->exclui($alerta->cod_identificacao);
+				$cod_identificacao = $alerta->cod_identificacao;
+				$this->eAlertas->exclui($cod_identificacao);
 			}
-			$this->eUsuario->excluir($usuario->cd_usuario);
+			$cd_usuario= $usuario->cd_usuario;
+			$this->eUsuario->excluir($cd_usuario);
 			
 			$data["title"] = "Alertas QueCarros";
 			$data["email"] = $email;

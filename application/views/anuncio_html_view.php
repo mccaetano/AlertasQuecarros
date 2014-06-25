@@ -175,7 +175,7 @@
 	</tr>
 <?php }	?>
 	<tr align="left">
-		<td>Para descadastrar-se deste e-mail, <a href="http://alertas.querocarros.com/usuario/cacnelarEmail/<?php echo $usuario[0]->cd_usuario;?>">acesse aqui</a>.
+		<td>Para descadastrar-se deste e-mail, <a href="http://alertas.querocarros.com/usuario/cancelaremail/<?php echo $usuario[0]->cd_usuario;?>">acesse aqui</a>.
 		</td>
 	</tr>
 </table>

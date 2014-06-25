@@ -77,7 +77,7 @@ class Usuario extends CI_Controller {
 	function checa_email_cadastrado($email) {
 		$this->load->model('eUsuario');
 		$usuarioData = $this->eUsuario->buscaEmail($email);
-		if (!is_null($usuarioData)) {
+		if ($usuarioData) {
 			$this->form_validation->set_message('checa_email_cadastrado', 'Email já cadastrado');
 			return FALSE;
 		}
@@ -93,6 +93,7 @@ class Usuario extends CI_Controller {
 		$this->form_validation->set_rules('iEmail', 'Email', 'trim|required|xss_clean|valid_email|callback_checa_email_cadastrado');
 		$this->form_validation->set_rules('iSenha', 'Senha', 'trim|required|xss_clean|max_length[10]|matches[iRepSenha]');
 		$this->form_validation->set_rules('iRepSenha', 'Repetir Senha', 'trim|required|xss_clean|max_length[10]');
+		$this->form_validation->set_rules('iAcc[]', 'Li e Concordo com o termo', 'required');
 		
 		if($this->form_validation->run() == FALSE)	{
 			$this->novo();
@@ -168,7 +169,7 @@ class Usuario extends CI_Controller {
 		}
 	}
 	
-	function cacnelaremail($cd_usuario = FALSE) {
+	function cancelaremail($cd_usuario = FALSE) {
 		
 		if ($cd_usuario === FALSE) {
 			$data["title"] = "Alertas QueCarros";
@@ -183,22 +184,11 @@ class Usuario extends CI_Controller {
 		
 		$this->load->model('eUsuario');
 		$usuario = $this->eUsuario->buscaUsuario($cd_usuario);
-		
-		if ($usuario === FALSE) {
-			$data["title"] = "Alertas QueCarros";
-			$data["email"] = FALSE;
-			$data['cd_usuario'] = FALSE;
-			$data["mensagem"] = 'Email não cadastrado no QueroCarros.com';
-			$this->load->view('templates/header', $data);
-			$this->load->view('alertas_cancelar', $data);
-			$this->load->view('templates/footer', $data);
-			return FALSE;
-		}
-		
-		$email =  $usuario[0]->st_email;
-		$cd_usuario = $usuario[0]->cd_usuario;
-		
+				
 		if ($usuario) {
+			$email =  $usuario[0]->st_email;
+			$cd_usuario = $usuario[0]->cd_usuario;
+			
 			$this->load->model('eAlertas');
 			$alertas = $this->eAlertas->listaAlertas($email);
 			if ($alertas) {

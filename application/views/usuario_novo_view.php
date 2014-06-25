@@ -65,7 +65,7 @@ if ($formValidator != '') {
 						<div class="controls">
 							<label class="checkbox"> <input type="checkbox" id="iNews" name="iNews" checked="checked">Desejo receber a newsletter do QueroCarrros.com e promoções de parceiros
 							</label>
-							<label class="checkbox"> <input type="checkbox" id="iAcc" name="iAcc">Aceito os Termos e Política de Privacidade do QueroCarros.com
+							<label class="checkbox"> <input type="checkbox" id="iAcc" name="iAcc[]">Aceito os Termos e Política de Privacidade do QueroCarros.com
 							</label>
 						</div>
 					</div>

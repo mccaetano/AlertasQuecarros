@@ -19,7 +19,7 @@ class eAlertas extends CI_Model {
 			$this->db->trans_rollback();
 			$return = FALSE;
 		}
-		
+		$this->db->cache_delete_all();
 		return $return;
 		
 	}
@@ -28,12 +28,14 @@ class eAlertas extends CI_Model {
 		$this->db->set('dataalteracao', date("Y-m-d H:i:s", time()));
 		$this->db->where('cod_identificacao', $cod_identificacao);
 		$return = $this->db->update('wtb_alertas_querocarros', $alerta);
+		$this->db->cache_delete_all();
 		return $return;
 	}
 	
 	function exclui($cod_identificacao) {
 		$this->db->where('cod_identificacao', $cod_identificacao);
 		$return = $this->db->delete('wtb_alertas_querocarros');
+		$this->db->cache_delete_all();
 		return $return;
 	}
 

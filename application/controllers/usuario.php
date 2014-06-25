@@ -100,6 +100,7 @@ class Usuario extends CI_Controller {
 			$email =  $this->input->post('iEmail');
 			$senha = $this->input->post('iSenha');
 			$news = $this->input->post('iNews') == "on" ? TRUE : FALSE;
+			
 			$this->load->model('eUsuario');
 			$this->eUsuario->adiciona($email, $senha, $news);
 			
@@ -134,6 +135,7 @@ class Usuario extends CI_Controller {
 		
 		$usuario = $this->eUsuario->buscaEmail($email);
 		
+		$data['usuario'] = FALSE;
 		if ($usuario) {
 			$data['usuario'] = $usuario[0];
 			
@@ -171,6 +173,7 @@ class Usuario extends CI_Controller {
 		if ($cd_usuario === FALSE) {
 			$data["title"] = "Alertas QueCarros";
 			$data["email"] = "";
+			$data['cd_usuario'] = FALSE;
 			$data["mensagem"] = 'Email não informado no QueroCarros.com';
 			$this->load->view('templates/header', $data);
 			$this->load->view('alertas_cancelar', $data);
@@ -183,7 +186,8 @@ class Usuario extends CI_Controller {
 		
 		if ($usuario === FALSE) {
 			$data["title"] = "Alertas QueCarros";
-			$data["email"] = "";
+			$data["email"] = FALSE;
+			$data['cd_usuario'] = FALSE;
 			$data["mensagem"] = 'Email não cadastrado no QueroCarros.com';
 			$this->load->view('templates/header', $data);
 			$this->load->view('alertas_cancelar', $data);
@@ -192,20 +196,28 @@ class Usuario extends CI_Controller {
 		}
 		
 		$email =  $usuario[0]->st_email;
-		
+		$cd_usuario = $usuario[0]->cd_usuario;
 		
 		if ($usuario) {
 			$this->load->model('eAlertas');
 			$alertas = $this->eAlertas->listaAlertas($email);
-			foreach ($alertas as $alerta) {
-				$cod_identificacao = $alerta->cod_identificacao;
-				$this->eAlertas->exclui($cod_identificacao);
+			if ($alertas) {
+				foreach ($alertas as $alerta) {
+					$cod_identificacao = $alerta->cod_identificacao;
+					$this->eAlertas->exclui($cod_identificacao);
+				}
 			}
 			$cd_usuario= $usuario[0]->cd_usuario;
 			$this->eUsuario->excluir($cd_usuario);
 			
+			$this->db->cache_delete('home', 'index');
+			$this->db->cache_delete('usuario', 'cancelaremail');
+			$this->db->cache_delete('login', 'validate');
+			$this->session->sess_destroy();
+			
 			$data["title"] = "Alertas QueCarros";
-			$data["email"] = $email;
+			$data["email"] = FALSE;
+			$data['cd_usuario'] = FALSE;
 			$data["mensagem"] = "Email $email cancelado com sucesso no QueroCarros.com";
 			$this->load->view('templates/header', $data);
 			$this->load->view('alertas_cancelar', $data);
@@ -213,7 +225,8 @@ class Usuario extends CI_Controller {
 			return FALSE;
 		} else {
 			$data["title"] = "Alertas QueCarros";
-			$data["email"] = $email;
+			$data["email"] = FALSE;
+			$data['cd_usuario'] = FALSE;
 			$data["mensagem"] = 'Email não cadastrado no QueroCarros.com';
 			$this->load->view('templates/header', $data);
 			$this->load->view('alertas_cancelar', $data);

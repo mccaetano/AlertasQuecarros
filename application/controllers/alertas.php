@@ -150,6 +150,7 @@ class Alertas extends CI_Controller {
 		$return = $this->eAlertas->exclui($cod_identificacao);
 		$this->db->cache_delete('home', 'index');
 		$this->db->cache_delete('alertas', 'edita');
+		$this->session->sess_destroy();
 		
 		
 		redirect('home', 'refresh');

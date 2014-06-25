@@ -107,14 +107,14 @@ class Login extends CI_Controller {
 			$this->load->model('eUsuario');
 			$usuario = $this->eUsuario->buscaUsuario($cd_usuario);
 			$sess_array = array(
-					'email' => $usuario[0]->st_mail,
+					'email' => $usuario[0]->st_email,
 					'cd_usuario' => $usuario[0]->cd_usuario
 			);
 			$this->session->set_userdata('logged_in', $sess_array);
 		}
 		
 		
-		if(!$this->session->userdata('logged_in')) {
+		if($this->session->userdata('logged_in') === FALSE) {
 			$data["title"] = "Alertas QueCarros";
 			$this->load->view('templates/header', $data);
 			$this->load->view('login_view');

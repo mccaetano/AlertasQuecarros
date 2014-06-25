@@ -33,6 +33,8 @@ class eUsuario extends CI_Model {
 		$result = $query->result();
 		if(count($result) > 0) {
 			return $result;
+		} else {
+			return FALSE;
 		}
 	
 	}
@@ -45,7 +47,9 @@ class eUsuario extends CI_Model {
 		$result = $query->result();
 		if(count($result) > 0) {
 			return $result;
-		}		
+		} else {
+			return FALSE;
+		}	
 		
 	}
 	
